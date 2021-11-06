@@ -3,8 +3,10 @@
 
 .App {
   text-align: center;
+  background-image: url(/src/fotobg2.png);
   
 }
+
 
 .container {
   display: flex;
@@ -30,7 +32,7 @@ p div {
 
 
 .App-logo {
-  height: 30vmin;
+  height: 20vmin;
   pointer-events: none;
   padding: 1%;
 }
@@ -51,7 +53,7 @@ p div {
 } */
 
 .App-header {
-  background-color: #4b5f7d;
+  
   min-height: 30vh;
   display: flex;
   flex-direction: column;
@@ -65,11 +67,3 @@ p div {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
