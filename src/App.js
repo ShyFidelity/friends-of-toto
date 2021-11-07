@@ -16,8 +16,8 @@ function App() {
           A social network for animals because people talk to much. 
         </p>
         </header>
-        <div class= "container"> 
-        <div class="divbox"> <img src={remi} className="App-logo" alt="remi hound" />
+        <div className= "container"> 
+        <div className="divbox"> <img src={remi} className="App-logo" alt="remi hound" />
         <p> ❤  <b> RemiHound </b> today i was pretty happy even though in this picture i look sad truth is i actually look sad like all the time so it's really not a big deal it just makes people give me more treats tbh</p>
         </div>
         </div>

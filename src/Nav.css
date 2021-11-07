@@ -1,15 +1,17 @@
 button {
     padding: 1vh;
+    background-color: tan;
     border: slategray;
-    border-radius: 3%;
+    border-radius: 10px;
     margin: 2%;
   
   
   }
   
-  nav {
-
-   display: inline;
+  .nav {
+    width: 100%;
+    text-align: center;
+    display: inline;
     margin: 2%;
     padding: 2%;
   }
