@@ -1,7 +1,8 @@
-import remi from './remi.png'
+
 import './App.css';
-import toto from './toto.svg'
+import paw from './images/pawlike.svg'
 import Nav from './navigation'
+import toto from './images/toto.svg'
 //import nav bar use in return 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
         <p>
           A social network for animals because people talk to much. 
         </p>
+       <img src= {paw} alt= "paw like btn" />
         </header>
         <div className= "container"> 
-        <div className="divbox"> <img src={remi} className="App-logo" alt="remi hound" />
+        <div className="divbox"> 
         <p> ❤  <b> RemiHound </b> today i was pretty happy even though in this picture i look sad truth is i actually look sad like all the time so it's really not a big deal it just makes people give me more treats tbh</p>
         </div>
         </div>
