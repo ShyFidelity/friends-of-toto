@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 
-.App {
+.container {
   text-align: center;
   background-image: url(../images/fotobg2.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-width: 100vh;
+  min-height: 100vh;
+
   
 }
 
