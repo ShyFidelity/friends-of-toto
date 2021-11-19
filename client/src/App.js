@@ -1,5 +1,5 @@
 
-import './App.css';
+import './styles/App.css';
 import Nav from './components/Navigation'
 import Login from './components/Login';
 //import nav bar use in return 
