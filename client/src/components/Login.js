@@ -6,7 +6,8 @@ export default function Login() {
 
     return (
         <Box
-          component="form"
+        className="inputElement"  
+        component="form"
           sx={{
             '& .MuiTextField-root': { m: 1, width: '25ch' },
           }}
