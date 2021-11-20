@@ -9,8 +9,6 @@
   background-size: cover;
   min-width: 100vh;
   min-height: 100vh;
-
-  
 }
 
 
@@ -21,6 +19,7 @@
   justify-content: center;
 
 }
+
 h1 {
   font-family: 'Righteous', cursive;
 }
@@ -34,8 +33,6 @@ p div {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 12px;
 }
-
-
 
 .App-logo {
   height: 20vmin;
@@ -59,7 +56,6 @@ p div {
 } */
 
 .App-header {
-
   display: flex;
   flex-direction: column;
   align-items: center;
