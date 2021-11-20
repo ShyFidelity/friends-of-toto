@@ -1,7 +1,8 @@
-import toto from './images/toto.svg'
+import toto from '../images/toto.svg';
+// import paw from '../images/pawlike.svg';
 
 
-function Landing() {
+export default function Landing() {
     return (
         <div className="App">
          
@@ -9,9 +10,9 @@ function Landing() {
         <img src={toto} className="App-logo" alt="toto dog logo" />
           <h1>Friends of Toto!</h1>
           <p>
-            A social network for animals because people talk to much. 
+            A social network for animals because people talk too much. 
           </p>
-         <img src= {paw} alt= "paw like btn" />
+         {/* <img src= {paw} alt= "paw like btn" /> */}
           </header>
           <div className= "container"> 
           <div className="divbox"> 
@@ -23,5 +24,3 @@ function Landing() {
     )
     
 }
-
-export default Landing
