@@ -1,5 +1,5 @@
 import './styles/App.css';
-import Nav from './components/Navigation';
+import Nav from './components/Nav';
 import Landing from './pages/Landing';
 import Login from './components/Login';
 import NewPet from './pages/NewPet';
