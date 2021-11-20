@@ -4,7 +4,7 @@ import toto from '../images/toto.svg';
 
 export default function Landing() {
     return (
-        <div className="App">
+        <div className="Landing">
          
         <header className="App-header">
         <img src={toto} className="App-logo" alt="toto dog logo" />
