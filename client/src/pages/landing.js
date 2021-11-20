@@ -4,7 +4,7 @@ import Login from '../components/Login';
 
 export default function Landing() {
     return (
-        <div className="App">
+        <div className="Landing">
         <header className="App-header">
         <Login />
         <img src={toto} className="App-logo" alt="toto dog logo" />
