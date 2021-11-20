@@ -11,13 +11,11 @@
   min-height: 100vh;
 }
 
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
 }
 
 h1 {
@@ -45,8 +43,6 @@ p div {
   max-width: 30vh;
   padding: 1%;
   margin: 3%;
-
-
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
