@@ -5,7 +5,6 @@ import Login from '../components/Login';
 export default function Landing() {
     return (
         <div className="App">
-         
         <header className="App-header">
         <Login />
         <img src={toto} className="App-logo" alt="toto dog logo" />
@@ -20,7 +19,6 @@ export default function Landing() {
           <p> ❤  <b> RemiHound </b> today i was pretty happy even though in this picture i look sad truth is i actually look sad like all the time so it's really not a big deal it just makes people give me more treats tbh</p>
           </div>
           </div>
-      
       </div>
     )
     
