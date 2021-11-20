@@ -1,17 +1,20 @@
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import './styles/App.css';
-import Nav from './components/Nav';
 import Landing from './pages/Landing';
-import Login from './components/Login';
 import NewPet from './pages/NewPet';
 
 function App() {
   return (
-    <div className="container">
-    <Nav/>
-    <Landing />
-    <Login/>
-    <NewPet />
-    </div>
+    <Router>
+      <div className="container">
+      {/* <Nav /> */}
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/manage-pets" component={NewPet} />
+      </Switch>
+      </div>
+    </Router>
   );
 }
 
