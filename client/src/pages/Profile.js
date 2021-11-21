@@ -1,46 +1,46 @@
 import React from 'react';
-import Box from '@mui/material/Box';
+// import Box from '@mui/material/Box';
 
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
+// import TextField from '@mui/material/TextField';
+// import MenuItem from '@mui/material/MenuItem';
 
 import Header from '../components/Header/index';
 import ProfileSettings from '../components/ProfileSettings/index';
 
-const petTypes = [
-  {
-    value: 'Dog',
-    label: 'Dog',
-  },
-  {
-    value: 'Cat',
-    label: 'Cat',
-  },
-  {
-    value: 'Bird',
-    label: 'Bird',
-  },
-  {
-    value: 'Small Mammal',
-    label: 'Small Mammal',
-  },
-  {
-    value: 'Reptile',
-    label: 'Reptile',
-  },
-  {
-    value: 'Other',
-    label: 'Other',
-  },
-];
+// const petTypes = [
+//   {
+//     value: 'Dog',
+//     label: 'Dog',
+//   },
+//   {
+//     value: 'Cat',
+//     label: 'Cat',
+//   },
+//   {
+//     value: 'Bird',
+//     label: 'Bird',
+//   },
+//   {
+//     value: 'Small Mammal',
+//     label: 'Small Mammal',
+//   },
+//   {
+//     value: 'Reptile',
+//     label: 'Reptile',
+//   },
+//   {
+//     value: 'Other',
+//     label: 'Other',
+//   },
+// ];
 
 export default function Profile() {
 
-  const [petType, setPetType] = React.useState('Dog');
+  // const [petType, setPetType] = React.useState('Dog');
 
-  const handleChange = (event) => {
-    setPetType(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setPetType(event.target.value);
+  // };
 
   return (
     <div className="container">
@@ -48,7 +48,7 @@ export default function Profile() {
       <h2>Hooray! Welcome to Friends of ToTo</h2>
       <ProfileSettings />
       <p>Tell us more about your friend</p>
-      <Box
+      {/* <Box
         className="inputElement"  
         component="form"
         sx={{
@@ -89,7 +89,7 @@ export default function Profile() {
             variant="filled"
           />
         </div>
-      </Box>
+      </Box> */}
     </div>
   );
 }
