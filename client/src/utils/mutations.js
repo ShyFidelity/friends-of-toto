@@ -23,3 +23,15 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const UPDATE_USER = gql`
+  mutation updateUser($username: String!, $bio: String, $profilePic: String) {
+    updateUser(username: $username, bio: $bio, profilePic: $profilePic) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;

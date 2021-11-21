@@ -22,6 +22,9 @@ const userSchema = new Schema({
   bio: {
     type: String,
   },
+  pofilePic: {
+    type: String,
+  },
   posts: [
     {
       type: Schema.Types.ObjectId,
