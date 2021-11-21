@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 
 import Auth from '../utils/auth';
 
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
+
+import Header from '../components/Header/index';
 
 const petTypes = [
   {
@@ -47,8 +49,9 @@ export default function Profile() {
   };
 
   return (
-        <div className="container">
+    <div className="container">
           <button className="btn btn-lg btn-light m-2" onClick={logout}>Logout</button>
+          <Header />
           <h2>Hooray! Welcome to Friends of ToTo</h2>
           <p>Tell us more about your friend</p>
         <Box
@@ -95,8 +98,7 @@ export default function Profile() {
        </div>
            
         </Box>
-        </div>
-      );
-
+    </div>
+  );
 }
 
