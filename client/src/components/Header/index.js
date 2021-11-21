@@ -5,6 +5,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Auth from '../../utils/auth';
+import '../../styles/Nav.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
