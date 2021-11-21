@@ -20,3 +20,11 @@ button {
     color: #000;
     text-decoration: none;
   }
+
+  .unselected {
+    text-decoration: none !important;
+  }
+
+  .nav-link {
+    text-decoration: underline;
+  }
