@@ -3,9 +3,19 @@ import React from 'react';
 
 // import TextField from '@mui/material/TextField';
 // import MenuItem from '@mui/material/MenuItem';
-
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 import Header from '../components/Header/index';
 import ProfileSettings from '../components/ProfileSettings/index';
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 // const petTypes = [
 //   {
@@ -46,7 +56,16 @@ export default function Profile() {
     <div className="container">
       <Header />
       <h2>Hooray! Welcome to Friends of ToTo</h2>
-      <ProfileSettings />
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={4}>
+            <ProfileSettings />
+          </Grid>
+          <Grid item xs={8}>
+            <Item>This will be where your posts are displayed</Item>
+          </Grid>
+        </Grid>
+      </Box>
       <p>Tell us more about your friend</p>
       {/* <Box
         className="inputElement"  
