@@ -19,6 +19,9 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  bio: {
+    type: String,
+  },
   posts: [
     {
       type: Schema.Types.ObjectId,
