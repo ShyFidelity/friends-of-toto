@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 
 import Header from '../components/Header/index';
+import ProfileSettings from '../components/ProfileSettings/index';
 
 const petTypes = [
   {
@@ -45,6 +46,7 @@ export default function Profile() {
     <div className="container">
       <Header />
       <h2>Hooray! Welcome to Friends of ToTo</h2>
+      <ProfileSettings />
       <p>Tell us more about your friend</p>
       <Box
         className="inputElement"  
