@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
+
+import Auth from '../utils/auth';
+
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -32,17 +35,22 @@ const petTypes = [
 
 export default function Profile() {
 
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
   const [petType, setPetType] = React.useState('Dog');
 
   const handleChange = (event) => {
     setPetType(event.target.value);
   };
 
-
-    return (
+  return (
         <div className="container">
-            <h2>Hooray! Welcome to Friends of ToTo</h2>
-            <p>Tell us more about your friend</p>
+          <button className="btn btn-lg btn-light m-2" onClick={logout}>Logout</button>
+          <h2>Hooray! Welcome to Friends of ToTo</h2>
+          <p>Tell us more about your friend</p>
         <Box
         className="inputElement"  
         component="form"
