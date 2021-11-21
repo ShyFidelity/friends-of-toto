@@ -1,7 +1,7 @@
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-import React, { useState } from 'react';
 
 const petTypes = [
   {
@@ -30,13 +30,9 @@ const petTypes = [
   },
 ];
 
+export default function Profile() {
 
-
-
-
-export default function NewPet() {
-
-    const [petType, setPetType] = React.useState('EUR');
+  const [petType, setPetType] = React.useState('Dog');
 
   const handleChange = (event) => {
     setPetType(event.target.value);

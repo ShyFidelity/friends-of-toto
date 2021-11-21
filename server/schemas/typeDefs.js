@@ -6,7 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    posts: [Post]!
+    posts: [Post]
   }
 
   type Post {
@@ -14,7 +14,7 @@ const typeDefs = gql`
     postText: String
     postAuthor: String
     createdAt: String
-    comments: [Comment]!
+    comments: [Comment]
   }
 
   type Comment {
