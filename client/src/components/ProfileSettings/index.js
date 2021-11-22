@@ -17,11 +17,6 @@ const useStyles = makeStyles({
   },
 });
 
-// const profileSettings = {
-//   username: "Maverick",
-//   bio: "You are all living in my world. I'm chill, but do what I want"
-// }
-
 export default function ProfileSettings() {
   const classes = useStyles();
 
@@ -54,7 +49,7 @@ export default function ProfileSettings() {
           value={username}
           variant="filled"
           disabled={!isEditable}
-          onChange={(e) => {setUsername(e.target.value)}}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <TextField
           required
