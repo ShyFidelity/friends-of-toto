@@ -10,6 +10,8 @@ import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 
 import { UPDATE_USER } from '../../utils/mutations';
+import Upload from '../Upload/index';
+
 
 const useStyles = makeStyles({
   root: {
@@ -63,7 +65,7 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={profilePic}
+          image={profileSettings.profilePic}
           title={`${username} Profile Pic`}
         />
       </CardActionArea>
@@ -96,6 +98,7 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
           {buttonText}
         </Button>
       </CardActions>
+      <Upload />
     </Card>
   );
 }
