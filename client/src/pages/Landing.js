@@ -27,7 +27,7 @@ export default function Landing() {
           A social network for animals because people talk too much. 
         </p>
         {/* <img src= {paw} alt= "paw like btn" /> */}
-        <ButtonGroup color="secondary" variant="contained" aria-label="contained secondary button group">
+        <ButtonGroup color="primary" variant="contained" aria-label="contained secondary button group">
           <Button><Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>Login</Link></Button>
           <Button><Link to='/signup' style={{ textDecoration: 'none', color: 'white' }}>Create Account</Link></Button>
         </ButtonGroup>
