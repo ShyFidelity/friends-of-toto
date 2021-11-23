@@ -55,7 +55,9 @@ export default function Profile() {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            <ProfileSettings 
+            <ProfileSettings
+              _id={profile._id}
+              profilePic={profile.profilePic} 
               username={profile.username}
               bio={profile.bio}
             />
