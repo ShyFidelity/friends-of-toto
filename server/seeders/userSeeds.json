@@ -1,0 +1,47 @@
+[
+    {
+        "username": "tinman",
+        "email": "tinman@fototo.com",
+        "password": "password01"
+    },
+    {
+        "username": "scarecrow",
+        "email": "scarecrow@fototo.com",
+        "password": "password01"
+    },
+    {
+        "username": "lion",
+        "email": "lion@fototo.com",
+        "password": "password01"
+    },
+    {
+        "username": "dorothy",
+        "email": "dorothy@fototo.com",
+        "password": "password01"
+    },
+    {
+        "username": "wickedWitch",
+        "email": "wickedwitch@fototo.com",
+        "password": "password01"
+    },
+    {
+        "username": "theWizard",
+        "email": "thewizard@fototo.com",
+        "password": "password01"
+    },
+    {
+        "username": "glenda",
+        "email": "glenda@fototo.com",
+        "password": "password01"
+    },
+    {
+        "username": "toto",
+        "email": "toto@fototo.com",
+        "password": "password01"
+    },
+    {
+        "username": "auntEm",
+        "email": "auntem@fototo.com",
+        "password": "password01"
+    }
+  ]
