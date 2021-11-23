@@ -33,7 +33,13 @@ const resolvers = {
     },
     updateUser: async (parent, { _id, username, bio, profilePic }, context) => {
       if (context.user) {
-        const user = await User.findOneAndUpdatebyId({_id}, { username:{username}, bio:{bio}, profilePic:{profilePic} });
+        const user = await User.findOneAndUpdate(
+          { _id: _id },
+          { 
+            username: username,
+            bio: bio, 
+            profilePic: profilePic 
+          });
         const token = signToken(user);
         return { token, user };
       }
