@@ -31,7 +31,7 @@ const Header = () => {
       <header className="bg-info text-dark mb-4 py-3 display-flex align-center">
         <button className="btn btn-lg btn-light m-2" onClick={logout}>Logout</button>
         <ButtonGroup variant="text" color="primary" aria-label="outlined primary button group">
-          <Button><NavLink to="/profile" className={isActive => 
+          <Button><NavLink to="/me" className={isActive => 
             "nav-link" + (!isActive ? " unselected" : "")}>Profile</NavLink>
           </Button>
           <Button><NavLink to='/following' className={isActive => 

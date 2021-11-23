@@ -1,14 +1,16 @@
 import React from 'react';
-// import Box from '@mui/material/Box';
-
-// import TextField from '@mui/material/TextField';
-// import MenuItem from '@mui/material/MenuItem';
+import { Redirect, useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Header from '../components/Header/index';
 import ProfileSettings from '../components/ProfileSettings/index';
+
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
+
+import Auth from '../utils/auth';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -17,49 +19,46 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-// const petTypes = [
-//   {
-//     value: 'Dog',
-//     label: 'Dog',
-//   },
-//   {
-//     value: 'Cat',
-//     label: 'Cat',
-//   },
-//   {
-//     value: 'Bird',
-//     label: 'Bird',
-//   },
-//   {
-//     value: 'Small Mammal',
-//     label: 'Small Mammal',
-//   },
-//   {
-//     value: 'Reptile',
-//     label: 'Reptile',
-//   },
-//   {
-//     value: 'Other',
-//     label: 'Other',
-//   },
-// ];
-
 export default function Profile() {
+  const { username } = useParams();
 
-  // const [petType, setPetType] = React.useState('Dog');
+  const { loading, data } = useQuery(!username ? QUERY_ME: QUERY_USER, {
+    variables: { username: username },
+  });
 
-  // const handleChange = (event) => {
-  //   setPetType(event.target.value);
-  // };
+  const profile = data?.me || data?.user || {};
+  // redirect to personal profile page if username is yours
+  if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
+    return <Redirect to="/me" />;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!profile?.username) {
+    return (
+      <div>
+        <Header />
+        <h4>
+          You need to be logged in to see this. Use the navigation links above to
+          sign up or log in!
+        </h4>
+      </div>
+    );
+  }
 
   return (
-    <div className="container">
+    <div>
       <Header />
       <h2>Hooray! Welcome to Friends of ToTo</h2>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            <ProfileSettings />
+            <ProfileSettings 
+              username={profile.username}
+              bio={profile.bio}
+            />
           </Grid>
           <Grid item xs={8}>
             <Item>This will be where your posts are displayed</Item>
@@ -67,48 +66,6 @@ export default function Profile() {
         </Grid>
       </Box>
       <p>Tell us more about your friend</p>
-      {/* <Box
-        className="inputElement"  
-        component="form"
-        sx={{
-          '& .MuiTextField-root': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <div>
-          <TextField
-            required
-            id="filled-required"
-            label="Required"
-            defaultValue="Pet Name"
-            variant="filled"
-          />
-          <TextField
-            id="filled-select-currency"
-            select
-            label="Select"
-            value={petType}
-            onChange={handleChange}
-            helperText="Pet Type"
-            variant="filled"
-          >
-            {petTypes.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-          <TextField
-            id="filled-multiline-static"
-            label="Bio"
-            multiline
-            rows={4}
-            defaultValue="Default Value"
-            variant="filled"
-          />
-        </div>
-      </Box> */}
     </div>
   );
 }

@@ -17,19 +17,22 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ProfileSettings() {
+export default function ProfileSettings({ username, bio }) {
   const classes = useStyles();
 
   const [isEditable, setIsEditable] = useState(false);
   const [buttonText, setButtonText] = useState("Edit");
-  const [username, setUsername] = useState("Maverick");
-  const [bio, setBio] = useState("You are all living in my world. I'm chill, but do what I want");
+  const [newUsername, setUsername] = useState('');
+  const [newBio, setBio] = useState('');
 
   const handleEdit = () => {
     setIsEditable(!isEditable);
     if (buttonText === "Edit") {
       setButtonText("Save")
-    } else {setButtonText("Edit")}
+    } else {
+      setButtonText("Edit")
+      //updateUser(newUsername, newBio)
+    }
   };
 
   return (
