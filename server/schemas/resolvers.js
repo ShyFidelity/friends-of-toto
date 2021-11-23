@@ -31,10 +31,13 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    updateUser: async (parent, { username, bio, profilePic }) => {
-      const user = await User.findOneAndUpdate({username}, { bio:{bio}, profilePic:{profilePic} });
-      const token = signToken(user);
-      return { token, user };
+    updateUser: async (parent, { _id, username, bio, profilePic }, context) => {
+      if (context.user) {
+        const user = await User.findOneAndUpdatebyId({_id}, { username:{username}, bio:{bio}, profilePic:{profilePic} });
+        const token = signToken(user);
+        return { token, user };
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
