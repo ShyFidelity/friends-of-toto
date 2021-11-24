@@ -22,7 +22,7 @@ const userSchema = new Schema({
   bio: {
     type: String,
   },
-  pofilePic: {
+  profilePic: {
     type: String,
   },
   posts: [
