@@ -60,12 +60,16 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
   const handleUpload = async (file) => {
     uploadFile(file, config)
         .then(data => {
-          console.log(data.location)
           setProfileSettings({
             ...profileSettings, 
             profilePic: data.location
-          });
-        })
+          })})
+          .then(data => {
+            console.log(profileSettings)
+            updateUser({
+              variables: { ...profileSettings },
+            });
+          })
         .catch(err => console.error(err))
   }
 
@@ -77,9 +81,6 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
       setButtonText("Edit")
       try {
         handleUpload(selectedFile)
-        updateUser({
-          variables: { ...profileSettings },
-        });
       } catch (err) {
         console.error(err);
       }

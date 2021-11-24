@@ -36,6 +36,7 @@ const resolvers = {
     },
     updateUser: async (parent, { _id, username, bio, profilePic }, context) => {
       if (context.user) {
+        console.log(profilePic);
         const user = await User.findOneAndUpdate(
           { _id: _id },
           {
@@ -45,6 +46,7 @@ const resolvers = {
           }
         );
         const token = signToken(user);
+        console.log(user)
         return { token, user };
       }
       throw new AuthenticationError('You need to be logged in!');
