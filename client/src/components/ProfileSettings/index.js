@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -65,7 +65,7 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
             ...profileSettings, 
             profilePic: data.location
           })})
-          .then(data => {
+          .then(() => {
             updateUser({
               variables: { ...profileSettings },
             });
