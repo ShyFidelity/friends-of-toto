@@ -6,6 +6,7 @@
   background-image: url(../images/fotobg2.png);
   background-repeat: no-repeat;
   background-position: center center;
+  background-attachment: fixed;
   background-size: cover;
   min-width: 100vh;
   min-height: 100vh;
