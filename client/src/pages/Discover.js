@@ -18,7 +18,7 @@ export default function Discover() {
       ) : (
         posts.map((post) => 
         <Post 
-          _id={post._id}
+          key={post._id}
           postAuthor={post.postAuthor}
           postText={post.postText}
         />)        

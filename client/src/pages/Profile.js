@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Header from '../components/Header/index';
 import ProfileSettings from '../components/ProfileSettings/index';
+import Post from '../components/Post/index';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -63,7 +64,18 @@ export default function Profile() {
             />
           </Grid>
           <Grid item xs={8}>
-            <Item>This will be where your posts are displayed</Item>
+            <Item>
+              This will be where your posts are displayed
+              {profile.posts ? (
+                profile.posts.map((post) =>
+                  <Post
+                    key={post._id}
+                    postAuthor={post.postAuthor}
+                    postText={post.postText}
+                  />
+                )) : (<div>Loading...</div>)
+              }  
+            </Item>
           </Grid>
         </Grid>
       </Box>
