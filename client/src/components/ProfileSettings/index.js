@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -44,9 +44,16 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
     username: username,
     bio: bio
   });
+
   const [selectedFile, setSelectedFile] = useState(null);
 
   const [updateUser] = useMutation(UPDATE_USER);
+
+  useEffect(() => {
+     updateUser({
+      variables: { ...profileSettings }
+    });
+  }, [profileSettings, updateUser]);
   
   const inputEl = React.useRef(null);
 
@@ -60,17 +67,14 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
 
   const handleUpload = async (file) => {
     uploadFile(file, config)
-        .then(data => {
-          setProfileSettings({
-            ...profileSettings, 
-            profilePic: data.location
-          })})
-          .then(() => {
-            updateUser({
-              variables: { ...profileSettings },
-            });
-          })
-        .catch(err => console.error(err))
+    .then((data) => {
+      console.log(data)
+      setProfileSettings({
+        ...profileSettings,
+        profilePic: data.location
+      })    
+    })
+    .catch(err => console.error(err))
   }
 
   const handleEdit = () => {
