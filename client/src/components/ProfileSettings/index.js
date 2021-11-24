@@ -11,7 +11,6 @@ import { TextField } from '@material-ui/core';
 
 import { UPDATE_USER } from '../../utils/mutations';
 import { uploadFile } from 'react-s3';
-// import Upload from '../Upload/index';
 
 const S3_BUCKET = process.env.REACT_APP_BUCKET_NAME
 const REGION = process.env.REACT_APP_REGION
@@ -65,7 +64,6 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
             profilePic: data.location
           })})
           .then(data => {
-            console.log(profileSettings)
             updateUser({
               variables: { ...profileSettings },
             });
@@ -133,7 +131,6 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
           {buttonText}
         </Button>
       </CardActions>
-      {/* <Upload /> */}
     </Card>
   );
 }
