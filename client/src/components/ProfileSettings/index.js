@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useMutation } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -48,6 +48,8 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
 
   const [updateUser] = useMutation(UPDATE_USER);
   
+  const inputEl = React.useRef(null);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setProfileSettings({
@@ -86,22 +88,36 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
   };
 
   const handleFileInput = (e) => {
-      setSelectedFile(e.target.files[0]);
+    setSelectedFile(e.target.files[0]);
   }
+
+  const onImageClick = async () => {
+    await inputEl.current.click();
+  };
 
   return (
     <Card className={classes.root}>
-      <CardActionArea
-        disabled={!isEditable}
-      > 
-        <input type="file" onChange={handleFileInput}/>  
-        <CardMedia
-          component="img"
-          className={classes.media}
-          image={profileSettings.profilePic}
-          title={`${profileSettings.username}'s Profile Pic`}
-        />
-      </CardActionArea>
+      <input
+        accept="image/*"
+        id="profile-pic-file"
+        type="file"
+        style={{ display: 'none' }}
+        ref={inputEl}
+        onChange={handleFileInput}
+      />
+      <label htmlFor="profile-pic-file">
+        <CardActionArea
+          disabled={!isEditable}
+          onClick={() => onImageClick()}
+        >   
+          <CardMedia
+            component="img"
+            className={classes.media}
+            image={profileSettings.profilePic}
+            title={`${profileSettings.username}'s Profile Pic`}
+          />
+        </CardActionArea>
+      </label>
       <CardContent>
         <TextField
           required
