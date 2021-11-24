@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Header from '../components/Header/index';
 import ProfileSettings from '../components/ProfileSettings/index';
+import Post from '../components/Post/index';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -51,7 +52,6 @@ export default function Profile() {
   return (
     <div>
       <Header />
-      <h2>Hooray! Welcome to Friends of ToTo</h2>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
@@ -63,7 +63,18 @@ export default function Profile() {
             />
           </Grid>
           <Grid item xs={8}>
-            <Item>This will be where your posts are displayed</Item>
+            <Item>
+              This will be where your posts are displayed
+              {profile.posts ? (
+                profile.posts.map((post) =>
+                  <Post
+                    key={post._id}
+                    postAuthor={post.postAuthor}
+                    postText={post.postText}
+                  />
+                )) : (<div>Loading...</div>)
+              }  
+            </Item>
           </Grid>
         </Grid>
       </Box>
