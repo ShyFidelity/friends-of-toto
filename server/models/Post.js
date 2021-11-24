@@ -2,9 +2,16 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema({
+  postImage: {
+    type: String,
+    required: 'You need to add an image.',
+    minlength: 1,
+    maxlength: 280,
+    trim: true,
+  },
   postText: {
     type: String,
-    required: 'You need to create a post!',
+    required: 'Please add a caption to your post.',
     minlength: 1,
     maxlength: 280,
     trim: true,

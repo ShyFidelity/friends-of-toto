@@ -10,8 +10,19 @@ import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 
 import { UPDATE_USER } from '../../utils/mutations';
-import Upload from '../Upload/index';
+import { uploadFile } from 'react-s3';
 
+const S3_BUCKET = process.env.REACT_APP_BUCKET_NAME
+const REGION = process.env.REACT_APP_REGION
+const ACCESS_KEY = process.env.REACT_APP_ACCESS_ID
+const SECRET_ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
+
+const config = {
+    bucketName: S3_BUCKET,
+    region: REGION,
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY,
+}
 
 const useStyles = makeStyles({
   root: {
@@ -33,9 +44,10 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
     username: username,
     bio: bio
   });
+  const [selectedFile, setSelectedFile] = useState(null);
 
-  const [updateUser, { error }] = useMutation(UPDATE_USER);
-
+  const [updateUser] = useMutation(UPDATE_USER);
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setProfileSettings({
@@ -44,6 +56,21 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
     });
   };
 
+  const handleUpload = async (file) => {
+    uploadFile(file, config)
+        .then(data => {
+          setProfileSettings({
+            ...profileSettings, 
+            profilePic: data.location
+          })})
+          .then(data => {
+            updateUser({
+              variables: { ...profileSettings },
+            });
+          })
+        .catch(err => console.error(err))
+  }
+
   const handleEdit = () => {
     setIsEditable(!isEditable);
     if (buttonText === "Edit") {
@@ -51,22 +78,28 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
     } else {
       setButtonText("Edit")
       try {
-        const { data } = updateUser({
-          variables: { ...profileSettings },
-        });
+        handleUpload(selectedFile)
       } catch (err) {
         console.error(err);
       }
     }
   };
 
+  const handleFileInput = (e) => {
+      setSelectedFile(e.target.files[0]);
+  }
+
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea
+        disabled={!isEditable}
+      > 
+        <input type="file" onChange={handleFileInput}/>  
         <CardMedia
+          component="img"
           className={classes.media}
           image={profileSettings.profilePic}
-          title={`${username} Profile Pic`}
+          title={`${profileSettings.username}'s Profile Pic`}
         />
       </CardActionArea>
       <CardContent>
@@ -98,7 +131,6 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
           {buttonText}
         </Button>
       </CardActions>
-      <Upload />
     </Card>
   );
 }

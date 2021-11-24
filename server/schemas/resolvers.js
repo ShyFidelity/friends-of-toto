@@ -26,6 +26,12 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    friends: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('friends');
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
@@ -38,11 +44,12 @@ const resolvers = {
       if (context.user) {
         const user = await User.findOneAndUpdate(
           { _id: _id },
-          { 
+          {
             username: username,
-            bio: bio, 
-            profilePic: profilePic 
-          });
+            bio: bio,
+            profilePic: profilePic,
+          }
+        );
         const token = signToken(user);
         return { token, user };
       }
@@ -65,9 +72,10 @@ const resolvers = {
 
       return { token, user };
     },
-    addPost: async (parent, { postText }, context) => {
+    addPost: async (parent, { postImage, postText }, context) => {
       if (context.user) {
         const post = await Post.create({
+          postImage,
           postText,
           postAuthor: context.user.username,
         });
