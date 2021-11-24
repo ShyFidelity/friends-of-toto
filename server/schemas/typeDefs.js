@@ -9,6 +9,7 @@ const typeDefs = gql`
     bio: String
     profilePic: String
     posts: [Post]
+    friends: [User]
   }
 
   type Post {
@@ -39,6 +40,7 @@ const typeDefs = gql`
     posts: [Post]
     post(postId: ID!): Post
     me: User
+    friends(username: String): [User]
   }
 
   type Mutation {
