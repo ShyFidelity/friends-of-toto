@@ -52,7 +52,6 @@ export default function Profile() {
   return (
     <div>
       <Header />
-      <h2>Hooray! Welcome to Friends of ToTo</h2>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
