@@ -16,6 +16,7 @@ const S3_BUCKET = process.env.REACT_APP_BUCKET_NAME
 const REGION = process.env.REACT_APP_REGION
 const ACCESS_KEY = process.env.REACT_APP_ACCESS_ID
 const SECRET_ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
+const S3_URL = process.env.REACT_APP_URL
 
 const config = {
     bucketName: S3_BUCKET,
@@ -49,14 +50,23 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
 
   const [updateUser] = useMutation(UPDATE_USER);
 
+  const inputEl = React.useRef(null);
+
   useEffect(() => {
      updateUser({
       variables: { ...profileSettings }
     });
   }, [profileSettings, updateUser]);
-  
-  const inputEl = React.useRef(null);
 
+  useEffect(() => {
+    const handleUpload = async (file) => {
+      uploadFile(file, config)
+    }
+    if (selectedFile) {
+      handleUpload(selectedFile)
+    }
+  }, [selectedFile])
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setProfileSettings({
@@ -65,36 +75,22 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
     });
   };
 
-  const handleUpload = async (file) => {
-    uploadFile(file, config)
-    .then((data) => {
-      console.log(data)
-      setProfileSettings({
-        ...profileSettings,
-        profilePic: data.location
-      })    
-    })
-    .catch(err => console.error(err))
-  }
-
   const handleEdit = () => {
     setIsEditable(!isEditable);
     if (buttonText === "Edit") {
       setButtonText("Save")
     } else {
       setButtonText("Edit")
-      try {
-        handleUpload(selectedFile)
-      } catch (err) {
-        console.error(err);
-      }
     }
   };
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
+    setProfileSettings({
+      ...profileSettings,
+      profilePic: S3_URL + e.target.files[0].name
+    })
   }
-
   const onImageClick = async () => {
     await inputEl.current.click();
   };
@@ -111,7 +107,6 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
       />
       <label htmlFor="profile-pic-file">
         <CardActionArea
-          disabled={!isEditable}
           onClick={() => onImageClick()}
         >   
           <CardMedia
