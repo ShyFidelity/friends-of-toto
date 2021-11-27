@@ -64,7 +64,6 @@ export default function Profile() {
           </Grid>
           <Grid item xs={8}>
             <Item>
-              This will be where your posts are displayed
               {profile.posts ? (
                 profile.posts.map((post) =>
                   <Post
