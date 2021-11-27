@@ -132,7 +132,7 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
             title={`${profileSettings.username}'s Profile Pic`}
           />
           <div 
-            style={{ position: 'absolute', top: '20px', left: '10px', color: 'black', backgroundColor: 'transparent' }}
+            style={{ position: 'absolute', top: '20px', color: 'black', backgroundColor: 'transparent' }}
             className={classes.overlay}
           ><img alt='' src={`${changePic}`}></img></div>
         </CardActionArea>
