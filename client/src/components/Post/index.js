@@ -15,6 +15,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 // import MoreVertIcon from '@mui/icons-material/MoreVert';
+import remi from '../../images/remi.png';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -47,7 +48,7 @@ export default function Post(props) {
       <CardMedia
         component="img"
         height="194"
-        image="/static/images/cards/paella.jpg"
+        image={remi}
         alt="Paella dish"
       />
       <CardContent>
