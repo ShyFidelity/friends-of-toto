@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useQuery } from '@apollo/client';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -16,6 +17,7 @@ import AddIcon from '@mui/icons-material/Add';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 // import MoreVertIcon from '@mui/icons-material/MoreVert';
 import remi from '../../images/remi.png';
+import { QUERY_USER } from '../../utils/queries';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,6 +33,14 @@ const ExpandMore = styled((props) => {
 export default function Post(props) {
   const [expanded, setExpanded] = React.useState(false);
 
+  const { loading, data } = useQuery(QUERY_USER, {
+      variables: { username: props.postAuthor },
+  });
+
+  if (loading) {
+    return <div>Loading...</div>;
+  } 
+  
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -39,11 +49,12 @@ export default function Post(props) {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-           Profile Pic 
-          </Avatar>
+          <Avatar 
+            sx={{ bgcolor: red[500] }} 
+            aria-label="recipe"
+            src={data.user.profilePic}
+          />
         }
-  
       />
       <CardMedia
         component="img"
