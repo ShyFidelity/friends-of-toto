@@ -11,6 +11,7 @@ import { TextField } from '@material-ui/core';
 
 import { UPDATE_USER } from '../../utils/mutations';
 import { uploadFile } from 'react-s3';
+import changePic from '../../images/photoChange.png';
 
 const S3_BUCKET = process.env.REACT_APP_BUCKET_NAME
 const REGION = process.env.REACT_APP_REGION
@@ -28,6 +29,15 @@ const config = {
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    position: 'relative'
+  },
+  overlay: {
+    height: '100%',
+    width: '100%',
+    opacity: '0',
+    '&:hover' : {
+      opacity: '1'
+    }
   },
   media: {
     height: 345,
@@ -107,6 +117,12 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
       />
       <label htmlFor="profile-pic-file">
         <CardActionArea
+          sx={{ ':hover': {
+                '& .overlay': {
+                  opacity: '1'
+                }
+              }
+          }}
           onClick={() => onImageClick()}
         >   
           <CardMedia
@@ -115,6 +131,10 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
             image={profileSettings.profilePic}
             title={`${profileSettings.username}'s Profile Pic`}
           />
+          <div 
+            style={{ position: 'absolute', top: '20px', left: '10px', color: 'black', backgroundColor: 'transparent' }}
+            className={classes.overlay}
+          ><img alt='' src={`${changePic}`}></img></div>
         </CardActionArea>
       </label>
       <CardContent>
