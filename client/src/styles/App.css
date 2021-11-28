@@ -8,16 +8,19 @@
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
-  min-width: 100vh;
+  min-width: 100vw;
   min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.container {
+/* .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
+  justify-content: center; 
+} */
 
 h1 {
   font-family: 'Righteous', cursive;
