@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Header from '../components/Header/index';
 import ProfileSettings from '../components/ProfileSettings/index';
 import Post from '../components/Post/index';
+import StickyHeader from '../components/StickyHeader/index'
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -40,7 +41,7 @@ export default function Profile() {
   if (!profile?.username) {
     return (
       <div>
-        <Header />
+        <StickyHeader />
         <h4>
           You need to be logged in to see this. Use the navigation links above to
           sign up or log in!
