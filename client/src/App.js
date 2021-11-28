@@ -48,6 +48,7 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/me" component={Profile} />
+          <Route exact path="/profile" component={Profile}/>
           <Route exact path="/profiles/:username" component={Profile} />
           <Route exact path="/following" component={Following} />
           <Route exact path="/discover" component={Discover} />

@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../utils/queries';
 
-import Header from '../components/Header/index';
+import StickyHeader from '../components/StickyHeader/index';
 import Post from '../components/Post/index';
 
 export default function Discover() {
@@ -11,7 +11,7 @@ export default function Discover() {
   
   return (
     <div>
-      <Header />
+      <StickyHeader />
       <p>Posts from all account will appear here so you can discover new friends to follow!</p>
       {loading ? (
         <div>Loading...</div>
