@@ -2,9 +2,12 @@ import StickyHeader from '../components/StickyHeader/index';
 
 export default function Following() {
     return (
-      <div>
+      <>
         <StickyHeader />
+        <div className="page">
         <p>Posts from accounts that you follow will appear here!</p>
-      </div>
+        </div>
+      </>
+
     )
 }
