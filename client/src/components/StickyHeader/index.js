@@ -145,7 +145,7 @@ const StickyHeader = () => {
                 <Typography 
                   textAlign="center"
                 >
-                  <Link to='/Profile'>
+                  <Link to='/me'>
                     Profile 
                   </Link>
                 </Typography>
