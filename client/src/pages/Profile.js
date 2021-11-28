@@ -68,6 +68,7 @@ export default function Profile() {
                 profile.posts.map((post) =>
                   <PersonalPost
                     key={post._id}
+                    postId={post._id}
                     postText={post.postText}
                   />
                 )) : (<div>Loading...</div>)
