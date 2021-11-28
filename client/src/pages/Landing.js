@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import toto from '../images/toto.svg';
-// import paw from '../images/pawlike.svg';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
@@ -26,7 +25,6 @@ export default function Landing() {
         <p>
           A social network for animals because people talk too much. 
         </p>
-        {/* <img src= {paw} alt= "paw like btn" /> */}
         <ButtonGroup color="primary" variant="contained" aria-label="contained secondary button group">
           <Button><Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>Login</Link></Button>
           <Button><Link to='/signup' style={{ textDecoration: 'none', color: 'white' }}>Create Account</Link></Button>

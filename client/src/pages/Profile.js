@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import ProfileSettings from '../components/ProfileSettings/index';
 import Post from '../components/Post/index';
 import StickyHeader from '../components/StickyHeader/index'
+import '../styles/Profile.css'
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -42,10 +43,10 @@ export default function Profile() {
       <>
         <StickyHeader />
         <div className="page">
-        <h4>
+        <h3>
           You need to be logged in to see this. Use the navigation links above to
           sign up or log in!
-        </h4>
+        </h3>
         </div>
       </>
     );
@@ -55,7 +56,7 @@ export default function Profile() {
     <>
       <StickyHeader />
       <div className="page">
-      <Box sx={{ flexGrow: 1 }}>
+      <Box className="profileBox" sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
             <ProfileSettings
@@ -80,7 +81,7 @@ export default function Profile() {
           </Grid>
         </Grid>
       </Box>
-      <p>Tell us more about your friend</p>
+    
     </div>
     </>
   );

@@ -1,7 +1,3 @@
-h3 {
- padding: 3%;
-}
-
 :root {
     --white: #fff;
     --dark: rgba(131, 116, 97, 0.822);
@@ -17,10 +13,6 @@ h3 {
     align-items: center;
 }
 
-.form {
-    margin: 1%;
-    padding: 1%;
-}
 
 input {
     padding: 1%;
@@ -31,6 +23,9 @@ input {
 
 }
 
+.profileBox {
+    margin: 2%;
+}
 button {
     color: var(--white);
     background-color: var(--dark);
