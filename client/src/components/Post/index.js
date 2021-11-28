@@ -55,18 +55,17 @@ export default function Post(props) {
             src={data.user.profilePic}
           />
         }
-      />
+        title={
+          <Typography>{props.postAuthor}</Typography>
+        }
+      >
+      </CardHeader>
       <CardMedia
         component="img"
         height="194"
         image={remi}
         alt="Paella dish"
       />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-        {props.postAuthor}
-        </Typography>
-      </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
