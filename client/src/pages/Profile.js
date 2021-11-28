@@ -5,7 +5,6 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import Header from '../components/Header/index';
 import ProfileSettings from '../components/ProfileSettings/index';
 import Post from '../components/Post/index';
 import StickyHeader from '../components/StickyHeader/index'
@@ -52,7 +51,7 @@ export default function Profile() {
 
   return (
     <div>
-      <Header />
+      <StickyHeader />
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
