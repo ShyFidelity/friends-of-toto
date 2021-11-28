@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import ProfileSettings from '../components/ProfileSettings/index';
-import Post from '../components/Post/index';
+import PersonalPost from '../components/PersonalPost/index';
 import StickyHeader from '../components/StickyHeader/index'
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
@@ -66,9 +66,9 @@ export default function Profile() {
             <Item>
               {profile.posts ? (
                 profile.posts.map((post) =>
-                  <Post
+                  <PersonalPost
                     key={post._id}
-                    postAuthor={post.postAuthor}
+                    postId={post._id}
                     postText={post.postText}
                   />
                 )) : (<div>Loading...</div>)

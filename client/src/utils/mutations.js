@@ -35,3 +35,11 @@ export const UPDATE_USER = gql`
     }
   }
 `;
+
+export const REMOVE_POST = gql`
+  mutation removePost($_id: ID!) {
+    removePost(_id: $_id) {
+      post
+    }
+  }
+  `;
