@@ -15,7 +15,6 @@ import {Link} from 'react-router-dom'
 import Auth from '../../utils/auth';
 
 const pages = ['Following', 'Discover' ];
-const settings = ['Profile', 'Logout'];
 
 const StickyHeader = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -139,22 +138,25 @@ const StickyHeader = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => 
-                ({setting} === "Logout" ? (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography 
-                      textAlign="center">
-                        <Link onClick={logout}>
-                            {setting} </Link>   
-                  </Typography>
-                </MenuItem> ) : ( 
-                <MenuItem key={setting} onClick={handleCloseNavMenu}>                      
-                    <Typography textAlign="center">
-                        <Link to={`/${setting}`}>
-                            {setting} </Link>
-                    </Typography>
-                </MenuItem> )
-              ))}
+              <MenuItem 
+                onClick={handleCloseNavMenu}>                      
+                <Typography 
+                  textAlign="center"
+                >
+                  <Link to='/Profile'>
+                    Profile 
+                  </Link>
+                </Typography>
+              </MenuItem> 
+              <MenuItem  
+                onClick={handleCloseUserMenu}>
+                <Typography 
+                  textAlign="center"
+                  onClick={logout}
+                >
+                  Logout
+                </Typography>
+              </MenuItem>   
             </Menu>
           </Box>
         </Toolbar>
