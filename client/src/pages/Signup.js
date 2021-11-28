@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+import '../styles/Signup.css'
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -39,10 +40,9 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
+      <div className="page">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+          <h3>Sign Up</h3>
           <div className="card-body">
             {data ? (
               <p>
@@ -50,7 +50,7 @@ const Signup = () => {
                 <Link to="/profile">to your Profile!</Link>
               </p>
             ) : (
-              <div>
+              <div className="form">
                 <form onSubmit={handleFormSubmit}>
                   <input
                     className="form-input"
@@ -77,7 +77,6 @@ const Signup = () => {
                     onChange={handleChange}
                   />
                   <button
-                    className="btn btn-block btn-primary"
                     style={{ cursor: 'pointer' }}
                     type="submit"
                   >
@@ -96,7 +95,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </main>
+
   );
 };
 

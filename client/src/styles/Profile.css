@@ -1,0 +1,40 @@
+:root {
+    --white: #fff;
+    --dark: rgba(131, 116, 97, 0.822);
+    --tan: #c4b292;
+    /* You can use it with any value that is repeated throughout the sheet */
+ 
+  }
+
+
+.page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+input {
+    padding: 1%;
+    margin: 0.5vw;
+    border: 1px solid var(--dark);
+    border-radius: 4px;
+    opacity: 80%;
+
+}
+
+.profileBox {
+    margin: 2%;
+}
+button {
+    color: var(--white);
+    background-color: var(--dark);
+    border: 1px transparent solid;
+    border-radius: 8px;
+    padding: 1%;
+}
+
+a:visited {
+    color: var(--white);
+    text-decoration: none;
+  }

@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import ProfileSettings from '../components/ProfileSettings/index';
 import PersonalPost from '../components/PersonalPost/index';
 import StickyHeader from '../components/StickyHeader/index'
+import '../styles/Profile.css'
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -39,20 +40,23 @@ export default function Profile() {
 
   if (!profile?.username) {
     return (
-      <div>
+      <>
         <StickyHeader />
-        <h4>
+        <div className="page">
+        <h3>
           You need to be logged in to see this. Use the navigation links above to
           sign up or log in!
-        </h4>
-      </div>
+        </h3>
+        </div>
+      </>
     );
   }
 
   return (
-    <div>
+    <>
       <StickyHeader />
-      <Box sx={{ flexGrow: 1 }}>
+      <div className="page">
+      <Box className="profileBox" sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
             <ProfileSettings
@@ -77,8 +81,9 @@ export default function Profile() {
           </Grid>
         </Grid>
       </Box>
-      <p>Tell us more about your friend</p>
+    
     </div>
+    </>
   );
 }
 
