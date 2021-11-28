@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useQuery } from '@apollo/client';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,6 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {Link} from 'react-router-dom'
 import Auth from '../../utils/auth';
+import { QUERY_ME } from '../../utils/queries';
 
 const pages = ['Following', 'Discover' ];
 
@@ -20,6 +22,8 @@ const StickyHeader = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+  const { data } = useQuery(QUERY_ME);
+  
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -40,9 +44,7 @@ const StickyHeader = () => {
     Auth.logout();
   };
   return (
-
-    
-    <AppBar position="static">
+     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -119,7 +121,7 @@ const StickyHeader = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Profile Pic" src={data.me.profilePic} />
               </IconButton>
             </Tooltip>
             <Menu
