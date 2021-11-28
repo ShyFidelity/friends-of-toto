@@ -10,8 +10,9 @@ export default function Discover() {
   const posts = data?.posts || [];
   
   return (
-    <div>
+    <>
       <StickyHeader />
+      <div className="page">
       <p>Posts from all account will appear here so you can discover new friends to follow!</p>
       {loading ? (
         <div>Loading...</div>
@@ -23,7 +24,8 @@ export default function Discover() {
           postText={post.postText}
         />)        
       )}
-    </div>
+      </div>
+    </>
   )
 }
 

@@ -39,19 +39,22 @@ export default function Profile() {
 
   if (!profile?.username) {
     return (
-      <div>
+      <>
         <StickyHeader />
+        <div className="page">
         <h4>
           You need to be logged in to see this. Use the navigation links above to
           sign up or log in!
         </h4>
-      </div>
+        </div>
+      </>
     );
   }
 
   return (
-    <div>
+    <>
       <StickyHeader />
+      <div className="page">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
@@ -79,6 +82,7 @@ export default function Profile() {
       </Box>
       <p>Tell us more about your friend</p>
     </div>
+    </>
   );
 }
 
