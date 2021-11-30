@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-
+import '../PersonalPost/PersonalPost.css'
 import { REMOVE_POST } from '../../utils/mutations';
 
 // import MoreVertIcon from '@mui/icons-material/MoreVert';

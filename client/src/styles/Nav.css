@@ -24,12 +24,14 @@
 
   .MuiCardActions-root{
     background-color:var(--space-cadet);
+    margin: 1%;
   }
 
   .MuiCardContent-root{
     background-color: var(--almond);
 
   }
+
 
   
 
