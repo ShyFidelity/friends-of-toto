@@ -52,7 +52,7 @@ const typeDefs = gql`
       profilePic: String
     ): Auth
     login(email: String!, password: String!): Auth
-    addFriend(_id: ID!): User
+    addFriend(username: String!): User
     addPost(postText: String!): Post
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post
