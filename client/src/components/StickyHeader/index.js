@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {Link} from 'react-router-dom'
 import Auth from '../../utils/auth';
 import { QUERY_ME } from '../../utils/queries';
+import Toto from '../../images/toto.svg';
 
 import '../../styles/Nav.css'
 
@@ -55,7 +56,7 @@ const StickyHeader = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            LOGO
+               <img src={Toto} width="80px"  alt="" />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -107,7 +108,7 @@ const StickyHeader = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            LOGO
+           <img src={Toto} width="80px" alt="" />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

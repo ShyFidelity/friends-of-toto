@@ -1,9 +1,19 @@
+:root {
+    --white: #fff;
+    --dark: rgba(131, 116, 97, 0.822);
+    --tan: #c4b292;
+ } 
+
 button {
     padding: 1vh;
     background-color: tan;
     border: slategray;
     border-radius: 10px;
     margin: 2%;
+  }
+
+  .css-19r6kue-MuiContainer-root {
+    background-color: var(--dark);
   }
   
   .nav {
