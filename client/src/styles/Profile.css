@@ -1,10 +1,8 @@
-:root {
+/* :root {
     --white: #fff;
     --dark: rgba(131, 116, 97, 0.822);
     --tan: #c4b292;
-    /* You can use it with any value that is repeated throughout the sheet */
- 
-  }
+ } */
 
 
 .page{
@@ -25,7 +23,9 @@ input {
 
 .profileBox {
     margin: 2%;
+    width: 80%;
 }
+
 button {
     color: var(--white);
     background-color: var(--dark);
