@@ -1,9 +1,7 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import ProfileSettings from '../components/ProfileSettings/index';
 import PersonalPost from '../components/PersonalPost/index';
@@ -13,13 +11,6 @@ import '../styles/Profile.css'
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
 export default function Profile() {
   const { username } = useParams();
@@ -69,20 +60,21 @@ export default function Profile() {
           <Grid item xs={8}>
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={2}>
-                <Grid item xs={4}>
-                  <Item>
-                    {profile.posts ? (
-                      profile.posts.map((post) =>
-                        <PersonalPost
-                          key={post._id}
-                          postId={post._id}
-                          postText={post.postText}
-                        />
+                {profile.posts ? (
+                  profile.posts.map((post) =>
+                    <Grid 
+                      key={post._id}
+                      item xs={4}
+                    >
+                      <PersonalPost
+                        key={post._id}
+                        postId={post._id}
+                        postText={post.postText}
+                      />
+                    </Grid>
                       )) : (<div>Loading...</div>)
-                    }  
-                  </Item>
-                </Grid>
-              </Grid>
+                }  
+               </Grid>
             </Box>
           </Grid>
         </Grid>
