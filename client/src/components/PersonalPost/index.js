@@ -29,7 +29,7 @@ const ExpandMore = styled((props) => {
 
 export default function PersonalPost(props) {
   const [expanded, setExpanded] = React.useState(false);
-  const [removePost, { error, data }] = useMutation(REMOVE_POST);
+  const [removePost] = useMutation(REMOVE_POST);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
