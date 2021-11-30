@@ -9,7 +9,7 @@ const typeDefs = gql`
     bio: String
     profilePic: String
     posts: [Post]
-    friends: [User]
+    friends: [String]
   }
 
   type Post {
@@ -37,6 +37,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     userPosts(username: String): [Post]
+    friendPosts(friends: [String]): [Post]
     posts: [Post]
     post(postId: ID!): Post
     me: User
