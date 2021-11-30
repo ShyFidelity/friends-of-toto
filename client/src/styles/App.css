@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 
+:root {
+
+  --space-cadet: #22223bff;
+--cinnamon-satin: #ce6a85ff;
+--cg-blue: #087ca7ff;
+--french-bistre: #846c5bff;
+--isabelline: #f2e9e4ff;
+}
+
+
+
 .container {
   text-align: center;
   background-image: url(../images/fotobg2.png);

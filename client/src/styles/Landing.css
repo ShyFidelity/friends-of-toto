@@ -1,0 +1,14 @@
+:root {
+
+    --space-cadet: #22223bff;
+  --cinnamon-satin: #ce6a85ff;
+  --cg-blue: #087ca7ff;
+  --french-bistre: #846c5bff;
+  --isabelline: #f2e9e4ff;
+  }
+
+  .MuiButtonBase-root{
+      color: var(--space-cadet) !important;
+  }
+
+
