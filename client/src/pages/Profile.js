@@ -67,17 +67,23 @@ export default function Profile() {
             />
           </Grid>
           <Grid item xs={8}>
-            <Item>
-              {profile.posts ? (
-                profile.posts.map((post) =>
-                  <PersonalPost
-                    key={post._id}
-                    postId={post._id}
-                    postText={post.postText}
-                  />
-                )) : (<div>Loading...</div>)
-              }  
-            </Item>
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={4}>
+                  <Item>
+                    {profile.posts ? (
+                      profile.posts.map((post) =>
+                        <PersonalPost
+                          key={post._id}
+                          postId={post._id}
+                          postText={post.postText}
+                        />
+                      )) : (<div>Loading...</div>)
+                    }  
+                  </Item>
+                </Grid>
+              </Grid>
+            </Box>
           </Grid>
         </Grid>
       </Box>
