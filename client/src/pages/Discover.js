@@ -1,19 +1,10 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../utils/queries';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
 import StickyHeader from '../components/StickyHeader/index';
 import Post from '../components/Post/index';
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
 export default function Discover() {
   const { loading, data } = useQuery(QUERY_POSTS);
@@ -39,26 +30,16 @@ export default function Discover() {
                 <Grid
                   key={post._id} 
                   item xs={4}>
-                  <Item
-                    key={post._id} 
-                  > 
                     <Post 
                       key={post._id}
                       postAuthor={post.postAuthor}
                       postText={post.postText}
                     />
-                  </Item>
                 </Grid>
                     )) : (<div>Loading...</div>)
                   }  
             </Grid>
-          </Box>
-        // posts.map((post) => 
-        // <Post 
-        //   key={post._id}
-        //   postAuthor={post.postAuthor}
-        //   postText={post.postText}
-        // />)        
+          </Box>      
       )}
       </div>
     </>
