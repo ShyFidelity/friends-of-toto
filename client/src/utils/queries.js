@@ -52,3 +52,19 @@ export const QUERY_POSTS = gql`
     }
   }
 `;
+
+export const QUERY_FRIENDS = gql`
+  query {
+    friends {
+      _id
+      username
+      profilePic
+      posts {
+        _id
+        postText
+        postAuthor
+        createdAt
+      }
+    }
+  }
+`;
