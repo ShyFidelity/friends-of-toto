@@ -1,33 +1,43 @@
 :root {
-    --white: #fff;
-    --dark: rgba(131, 116, 97, 0.822);
-    --tan: #c4b292;
- } 
 
-button {
-    padding: 1vh;
-    background-color: tan;
-    border: slategray;
-    border-radius: 10px;
-    margin: 2%;
-  }
+  --space-cadet: #22223bff;
+--cinnamon-satin: #ce6a85ff;
+--cg-blue: #087ca7ff;
+--french-bistre: #846c5bff;
+--isabelline: #f2e9e4ff;
+--almond: #f1dac4;
+--old-lace: #faf2e5;
+}
+
+
 
   .css-19r6kue-MuiContainer-root {
-    background-color: var(--dark);
+    background-color: var(--space-cadet);
+    color: var(--isabelline);
+    padding: 1%;
   }
+
+  .MuiCardMedia-root{
+    background-color: var(--old-lace);
+
+  }
+
+  .MuiCardActions-root{
+    color: var(--old-lace);
+    background-color:var(--space-cadet);
+    margin: 1%;
+  }
+
+  .MuiCardContent-root{
+    background-color: var(--almond);
+
+  }
+
+  .MuiButton-label {
+    color: var(--old-lace);
+  }
+
   
-  .nav {
-    width: 100%;
-    text-align: center;
-    display: inline;
-    margin: 2%;
-    padding: 2%;
-  }
-  
-  a {
-    color: #000;
-    text-decoration: none;
-  }
 
   .unselected {
     text-decoration: none !important;
@@ -38,5 +48,5 @@ button {
   }
 
   .custom-link {
-    color: black !important;
+    color: var(--isabelline) !important;
   }
