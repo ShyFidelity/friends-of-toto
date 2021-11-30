@@ -32,6 +32,7 @@ export default function Discover() {
                   item xs={4}>
                     <Post 
                       key={post._id}
+                      postId={post._id}
                       postAuthor={post.postAuthor}
                       postText={post.postText}
                     />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -18,6 +18,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 // import MoreVertIcon from '@mui/icons-material/MoreVert';
 import remi from '../../images/remi.png';
 import { QUERY_USER } from '../../utils/queries';
+import { ADD_FRIEND } from '../../utils/mutations';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -37,12 +38,20 @@ export default function Post(props) {
       variables: { username: props.postAuthor },
   });
 
+  const [addFriend] = useMutation(ADD_FRIEND);
+
   if (loading) {
     return <div>Loading...</div>;
   } 
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleAddFriend = () => {
+    addFriend({
+      variables: { username: props.postAuthor }
+    })
   };
 
   return (
@@ -73,7 +82,10 @@ export default function Post(props) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-        <IconButton aria-label="follow">
+        <IconButton 
+          aria-label="follow"
+          onClick={handleAddFriend}
+        >
           <AddIcon />
         </IconButton>
         <ExpandMore
