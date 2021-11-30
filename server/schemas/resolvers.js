@@ -14,6 +14,14 @@ const resolvers = {
       const params = username ? { username } : {};
       return Post.find(params).sort({ createdAt: -1 });
     },
+    friendPosts: async (parent, args, context) => {
+      console.log(args.friends)
+      if (context.user) {
+        return Post.find({
+          postAuthor: { $in: [...args.friends]}}).sort({ createdAt: -1 })
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
@@ -26,12 +34,12 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    friends: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('friends');
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
+    // friends: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return User.findOne({ _id: context.user._id });
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
   },
 
   Mutation: {

@@ -32,6 +32,7 @@ export const QUERY_ME = gql`
         postAuthor
         createdAt
       }
+      friends
     }
   }
 `;
@@ -63,6 +64,24 @@ export const QUERY_FRIENDS = gql`
         _id
         postText
         postAuthor
+        createdAt
+      }
+    }
+  }
+`;
+
+export const QUERY_FRIEND_POSTS = gql`
+  query friendPosts($friends: [String]) {
+    friendPosts(friends: $friends) {
+      _id
+      postImage
+      postText
+      postAuthor
+      createdAt
+      comments {
+        _id
+        commentText
+        commentAuthor
         createdAt
       }
     }
