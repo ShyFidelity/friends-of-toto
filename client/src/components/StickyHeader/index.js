@@ -150,7 +150,8 @@ const StickyHeader = () => {
             >
               <MenuItem 
                 onClick={handleCloseNavMenu}>                      
-                <Typography 
+                <Typography
+                  style={{ padding:'5px' }} 
                   textAlign="center"
                 >
                   <Link 
@@ -163,7 +164,8 @@ const StickyHeader = () => {
               </MenuItem> 
               <MenuItem  
                 onClick={handleCloseUserMenu}>
-                <Typography 
+                <Typography
+                  style={{ padding:'5px' }}
                   textAlign="center"
                   onClick={logout}
                 >
