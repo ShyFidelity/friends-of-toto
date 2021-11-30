@@ -72,6 +72,17 @@ const resolvers = {
 
       return { token, user };
     },
+    addFriend: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { friends: args._id } }
+        );
+
+        return user;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
     addPost: async (parent, { postImage, postText }, context) => {
       if (context.user) {
         const post = await Post.create({
