@@ -146,7 +146,7 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
           value={profileSettings.username}
           name='username'
           variant="filled"
-          // disabled={!isEditable}
+          disabled
           // onChange={handleChange}
         />
         <TextField
