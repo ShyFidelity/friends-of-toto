@@ -15,7 +15,6 @@ const resolvers = {
       return Post.find(params).sort({ createdAt: -1 });
     },
     friendPosts: async (parent, args, context) => {
-      console.log(args.friends)
       if (context.user) {
         return Post.find({
           postAuthor: { $in: [...args.friends]}}).sort({ createdAt: -1 })
