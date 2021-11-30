@@ -25,8 +25,18 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_USER = gql`
-  mutation updateUser($_id: ID!, $username: String!, $bio: String, $profilePic: String) {
-    updateUser(_id: $_id, username: $username, bio: $bio, profilePic: $profilePic) {
+  mutation updateUser(
+    $_id: ID!
+    $username: String!
+    $bio: String
+    $profilePic: String
+  ) {
+    updateUser(
+      _id: $_id
+      username: $username
+      bio: $bio
+      profilePic: $profilePic
+    ) {
       token
       user {
         _id
@@ -42,4 +52,14 @@ export const REMOVE_POST = gql`
       post
     }
   }
-  `;
+`;
+
+export const ADD_FRIEND = gql`
+  mutation addFriend($_id: ID!) {
+    addFriend(_id: $_id) {
+      friends {
+        _id
+      }
+    }
+  }
+`;
