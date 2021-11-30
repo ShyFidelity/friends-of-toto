@@ -16,6 +16,8 @@ import {Link} from 'react-router-dom'
 import Auth from '../../utils/auth';
 import { QUERY_ME } from '../../utils/queries';
 
+import '../../styles/Nav.css'
+
 const pages = ['Following', 'Discover' ];
 
 const StickyHeader = () => {
@@ -88,9 +90,13 @@ const StickyHeader = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                      <Link to={`/${page}`}>
-                      {page} </Link>
-                      </Typography>
+                    <Link 
+                      className="custom-link"
+                      to={`/${page}`}
+                    >
+                      {page} 
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -111,7 +117,9 @@ const StickyHeader = () => {
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                  <Typography textAlign="center">
-                      <Link to={`/${page}`}>
+                      <Link 
+                      className="custom-link"
+                      to={`/${page}`}>
                       {page} </Link>
                       </Typography>
               </Button>
@@ -145,7 +153,10 @@ const StickyHeader = () => {
                 <Typography 
                   textAlign="center"
                 >
-                  <Link to='/me'>
+                  <Link 
+                    className='custom-link'
+                    to='/me'
+                  >
                     Profile 
                   </Link>
                 </Typography>
