@@ -1,5 +1,8 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
+import { useProfileContext } from '../../utils/GlobalState';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -22,11 +25,20 @@ import '../../styles/Nav.css'
 const pages = ['Following', 'Discover' ];
 
 const StickyHeader = () => {
+  const [state, setState] = useProfileContext();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const { data } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(QUERY_ME);
   
+  const { profilePic } = state;
+  
+  useEffect(() => {
+    if (!loading) {
+    setState({profilePic: data.me.profilePic})
+    }
+  }, [loading])
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -130,7 +142,7 @@ const StickyHeader = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Profile Pic" src={data.me.profilePic} />
+                <Avatar alt="Profile Pic" src={profilePic} />
               </IconButton>
             </Tooltip>
             <Menu

@@ -33,7 +33,6 @@ export default function Profile() {
   if (!profile?.username) {
     return (
       <>
-        <StickyHeader />
         <div className="page">
         <h3>
           You need to be logged in to see this. Use the navigation links above to

@@ -6,14 +6,14 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
-import './styles/App.css';
+import { ProfileProvider } from './utils/GlobalState';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import Following from './pages/Following';
 import Discover from './pages/Discover';
+import './styles/App.css';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -39,21 +39,23 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <div className="container">
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          
-          <Route exact path="/me" component={Profile} />
-          <Route exact path="/profile" component={Profile}/>
-          <Route exact path="/profiles/:username" component={Profile} />
-          <Route exact path="/following" component={Following} />
-          <Route exact path="/discover" component={Discover} />
-        </Switch>
-        </div>
-      </Router>
+      <ProfileProvider>
+        <Router>
+          <div className="container">
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            
+            <Route exact path="/me" component={Profile} />
+            <Route exact path="/profile" component={Profile}/>
+            <Route exact path="/profiles/:username" component={Profile} />
+            <Route exact path="/following" component={Following} />
+            <Route exact path="/discover" component={Discover} />
+          </Switch>
+          </div>
+        </Router>
+      </ProfileProvider>
     </ApolloProvider>
   );
 }
