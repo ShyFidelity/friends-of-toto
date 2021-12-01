@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaldi:wght@700&display=swap');
+
+
 :root {
 
   --space-cadet: #22223bff;
@@ -12,6 +15,7 @@
 
 
   .MuiContainer-root {
+    font-family: 'Jaldi', sans-serif;
     background-color: var(--space-cadet);
     color: var(--old-lace);
     min-width: 100vw;
@@ -40,5 +44,6 @@
   }
 
   .custom-link {
+    font-family: 'Jaldi', sans-serif;
     color: var(--isabelline) !important;
   }
