@@ -10,7 +10,7 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
+import { black } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
@@ -59,7 +59,7 @@ export default function Post(props) {
       <CardHeader
         avatar={
           <Avatar 
-            sx={{ bgcolor: red[500] }} 
+            sx={{ bgcolor: 'black' }} 
             aria-label="recipe"
             src={data.user.profilePic}
           />
