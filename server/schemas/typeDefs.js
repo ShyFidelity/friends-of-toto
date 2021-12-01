@@ -56,6 +56,7 @@ const typeDefs = gql`
     addFriend(username: String!): User
     addPost(postImage: String!, postText: String!): Post
     addComment(postId: ID!, commentText: String!): Post
+    removeFriend(username: String!): User
     removePost(_id: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
   }
