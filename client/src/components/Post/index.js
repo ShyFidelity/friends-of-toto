@@ -17,7 +17,6 @@ import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import remi from '../../images/remi.png';
 import { QUERY_USER } from '../../utils/queries';
 import { ADD_FRIEND, REMOVE_FRIEND } from '../../utils/mutations';
 
@@ -40,48 +39,44 @@ export default function Post(props) {
   const [removeFriend] = useMutation(REMOVE_FRIEND);
 
   const { loading, data } = useQuery(QUERY_USER, {
-      variables: { username: props.postAuthor },
+    variables: { username: props.postAuthor },
   });
 
   if (loading) {
     return <div>Loading...</div>;
-  } 
-  
+  }
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   const handleFriendship = () => {
-    location.pathname === "/Discover" ? (
-      addFriend({
-        variables: { username: props.postAuthor }
-      })
-    ) : (
-      removeFriend({
-        variables: { username: props.postAuthor }
-      })
-    )
+    location.pathname === '/Discover'
+      ? addFriend({
+          variables: { username: props.postAuthor },
+        })
+      : removeFriend({
+          variables: { username: props.postAuthor },
+        });
   };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar 
+
+             <Avatar 
             sx={{ bgcolor: 'black' }} 
             aria-label="recipe"
             src={data.user.profilePic}
           />
         }
-        title={
-          <Typography>{props.postAuthor}</Typography>
-        }
-      >
-      </CardHeader>
+        title={<Typography>{props.postAuthor}</Typography>}
+      ></CardHeader>
       <CardMedia
         component="img"
         height="194"
-        image={remi}
+        src={props.postImage}
         alt="Paella dish"
       />
       <CardActions disableSpacing>
@@ -91,10 +86,7 @@ export default function Post(props) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-        <IconButton 
-          aria-label="follow"
-          onClick={handleFriendship}
-        >
+        <IconButton aria-label="follow" onClick={handleFriendship}>
           <AddIcon />
         </IconButton>
         <ExpandMore
@@ -108,16 +100,9 @@ export default function Post(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-
-          <Typography paragraph>
-          {props.postText}
-          </Typography>
+          <Typography paragraph>{props.postText}</Typography>
         </CardContent>
       </Collapse>
     </Card>
   );
 }
-
-
-
-
