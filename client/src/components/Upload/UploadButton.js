@@ -9,12 +9,12 @@ const Input = styled('input')({
   display: 'none',
 });
 
-export default function UploadButtons() {
+export default function UploadButton() {
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
       <label htmlFor="icon-button-file">
         <Input accept="image/*" id="icon-button-file" type={ Card } />
-        <IconButton color="primary" aria-label="upload picture" component="span">
+        <IconButton color="secondary" aria-label="upload picture" component="span">
           <AddCircle />
         </IconButton>
       </label>
