@@ -93,7 +93,7 @@ const StickyHeader = () => {
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
                     <Link 
-                      className="custom-link"
+                      className='drop-custom-link'
                       to={`/${page}`}
                     >
                       {page} 
