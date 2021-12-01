@@ -57,7 +57,15 @@ export const REMOVE_POST = gql`
 export const ADD_FRIEND = gql`
   mutation addFriend($username: String!) {
     addFriend(username: $username) {
-      friends 
+      friends
+    }
+  }
+`;
+
+export const REMOVE_FRIEND = gql`
+  mutation removeFriend($username: String!) {
+    removeFriend(username: $username) {
+      friends
     }
   }
 `;
