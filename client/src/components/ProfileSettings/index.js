@@ -75,6 +75,7 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
     }
     if (selectedFile) {
       handleUpload(selectedFile)
+      window.location.reload()
     }
   }, [selectedFile])
   
@@ -91,6 +92,7 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
     if (buttonText === "Edit") {
       setButtonText("Save")
     } else {
+      window.location.reload()
       setButtonText("Edit")
     }
   };
@@ -147,7 +149,7 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
           name='username'
           variant="filled"
           disabled
-          // onChange={handleChange}
+          onChange={handleChange}
         />
         <TextField
           required
