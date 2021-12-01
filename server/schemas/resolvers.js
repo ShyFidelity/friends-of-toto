@@ -50,7 +50,7 @@ const resolvers = {
     updateUser: async (parent, { _id, username, bio, profilePic }, context) => {
       if (context.user) {
         const user = await User.findOneAndUpdate(
-          { _id: _id },
+          { _id: context.user._id },
           {
             username: username,
             bio: bio,
