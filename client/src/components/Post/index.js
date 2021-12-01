@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useLocation } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -15,10 +16,10 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 import remi from '../../images/remi.png';
 import { QUERY_USER } from '../../utils/queries';
-import { ADD_FRIEND } from '../../utils/mutations';
+import { ADD_FRIEND, REMOVE_FRIEND } from '../../utils/mutations';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -32,13 +33,15 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function Post(props) {
+  const location = useLocation();
   const [expanded, setExpanded] = React.useState(false);
+
+  const [addFriend] = useMutation(ADD_FRIEND);
+  const [removeFriend] = useMutation(REMOVE_FRIEND);
 
   const { loading, data } = useQuery(QUERY_USER, {
       variables: { username: props.postAuthor },
   });
-
-  const [addFriend] = useMutation(ADD_FRIEND);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -48,10 +51,16 @@ export default function Post(props) {
     setExpanded(!expanded);
   };
 
-  const handleAddFriend = () => {
-    addFriend({
-      variables: { username: props.postAuthor }
-    })
+  const handleFriendship = () => {
+    location.pathname === "/Discover" ? (
+      addFriend({
+        variables: { username: props.postAuthor }
+      })
+    ) : (
+      removeFriend({
+        variables: { username: props.postAuthor }
+      })
+    )
   };
 
   return (
@@ -84,7 +93,7 @@ export default function Post(props) {
         </IconButton>
         <IconButton 
           aria-label="follow"
-          onClick={handleAddFriend}
+          onClick={handleFriendship}
         >
           <AddIcon />
         </IconButton>

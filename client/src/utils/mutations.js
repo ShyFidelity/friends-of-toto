@@ -57,7 +57,10 @@ export const REMOVE_POST = gql`
 export const ADD_FRIEND = gql`
   mutation addFriend($username: String!) {
     addFriend(username: $username) {
-      friends
+      token
+      user {
+        friends
+      }
     }
   }
 `;
@@ -65,7 +68,10 @@ export const ADD_FRIEND = gql`
 export const REMOVE_FRIEND = gql`
   mutation removeFriend($username: String!) {
     removeFriend(username: $username) {
-      friends
+      token
+      user {
+        friends
+      }
     }
   }
 `;
