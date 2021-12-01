@@ -17,7 +17,8 @@ const resolvers = {
     friendPosts: async (parent, args, context) => {
       if (context.user) {
         return Post.find({
-          postAuthor: { $in: [...args.friends]}}).sort({ createdAt: -1 })
+          postAuthor: { $in: [...args.friends] },
+        }).sort({ createdAt: -1 });
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -121,6 +122,20 @@ const resolvers = {
             runValidators: true,
           }
         );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeFriend: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findOneAndDelete(
+          { _id: context.user._id },
+          {
+            $pull: {
+              friends: args.username,
+            },
+          }
+        );
+        return user;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
