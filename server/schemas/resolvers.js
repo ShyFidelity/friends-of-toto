@@ -127,7 +127,7 @@ const resolvers = {
     },
     removeFriend: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findOneAndDelete(
+        const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
             $pull: {
