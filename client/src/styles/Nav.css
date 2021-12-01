@@ -47,3 +47,7 @@
     font-family: 'Jaldi', sans-serif;
     color: var(--isabelline) !important;
   }
+
+.drop-custom-link {
+  color: var(--space-cadet);
+}
