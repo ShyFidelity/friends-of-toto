@@ -39,7 +39,7 @@ const typeDefs = gql`
     userPosts(username: String): [Post]
     friendPosts(friends: [String]): [Post]
     posts: [Post]
-    post(postId: ID!): Post
+    post(_id: ID!): Post
     me: User
     friends(username: String): [User]
   }
@@ -56,7 +56,7 @@ const typeDefs = gql`
     addFriend(username: String!): User
     addPost(postText: String!): Post
     addComment(postId: ID!, commentText: String!): Post
-    removePost(postId: ID!): Post
+    removePost(_id: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
   }
 `;
