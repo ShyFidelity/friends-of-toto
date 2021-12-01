@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaldi:wght@700&display=swap');
+
+
 :root {
 
   --space-cadet: #22223bff;
@@ -11,18 +14,19 @@
 
 
 
-  .css-19r6kue-MuiContainer-root {
+  .MuiContainer-root {
+    font-family: 'Jaldi', sans-serif;
     background-color: var(--space-cadet);
     color: var(--old-lace);
+    min-width: 100vw;
     padding: 1%;
   }
 
 
-  .MuiCardActions-root{
-    color: var(--old-lace);
-    background-color:var(--space-cadet);
-    margin: 1%;
+  .MuiPaper-root {
+    background-color: var(--space-cadet);
   }
+
 
 
   .MuiButton-label {
@@ -40,5 +44,6 @@
   }
 
   .custom-link {
+    font-family: 'Jaldi', sans-serif;
     color: var(--isabelline) !important;
   }
