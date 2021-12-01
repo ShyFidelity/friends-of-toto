@@ -1,0 +1,25 @@
+:root {
+
+    --space-cadet: #22223bff;
+    --independence: #4A4E69;
+    --heliotrope-gray:  #9a8c98;
+    --silver-pink: #c9ada7;
+    --isabelline: #f2e9e4ff;
+    --almond: #f1dac4;
+    --old-lace: #faf2e5;
+    }
+  
+
+
+
+.MuiCardContent-root{
+    background-color: var(--isabelline);
+    border: none !important;
+  }
+
+  .MuiCardMedia-root{
+    background-color: var(--isabelline);
+   
+
+  }
+

@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import ProfileSettings from '../components/ProfileSettings/index';
 import PersonalPost from '../components/PersonalPost/index';
 import StickyHeader from '../components/StickyHeader/index'
+import UploadButton from '../components/Upload/UploadButton';
 import '../styles/Profile.css'
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
@@ -75,11 +76,12 @@ export default function Profile() {
                       )) : (<div>Loading...</div>)
                 }  
                </Grid>
+             
             </Box>
           </Grid>
         </Grid>
       </Box>
-    
+      <UploadButton />
     </div>
     </>
   );
