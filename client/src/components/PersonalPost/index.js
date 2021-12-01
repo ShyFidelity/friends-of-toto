@@ -10,11 +10,10 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import '../PersonalPost/PersonalPost.css'
+import '../PersonalPost/PersonalPost.css';
 import { REMOVE_POST } from '../../utils/mutations';
 
 // import MoreVertIcon from '@mui/icons-material/MoreVert';
-import remi from '../../images/remi.png';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -38,9 +37,9 @@ export default function PersonalPost(props) {
   const handleDelete = async () => {
     try {
       await removePost({
-        variables: { _id: props.postId}
+        variables: { _id: props.postId },
       });
-      window.location.reload()
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }
@@ -51,14 +50,11 @@ export default function PersonalPost(props) {
       <CardMedia
         component="img"
         height="194"
-        image={remi}
+        src={props.postImage}
         alt="Paella dish"
       />
       <CardActions disableSpacing>
-        <IconButton 
-          aria-label="delete"
-          onClick={handleDelete}
-        >
+        <IconButton aria-label="delete" onClick={handleDelete}>
           <DeleteForeverIcon />
         </IconButton>
         <ExpandMore
@@ -72,9 +68,7 @@ export default function PersonalPost(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>
-          {props.postText}
-          </Typography>
+          <Typography paragraph>{props.postText}</Typography>
         </CardContent>
       </Collapse>
     </Card>

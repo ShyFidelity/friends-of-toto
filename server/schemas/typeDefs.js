@@ -53,10 +53,10 @@ const typeDefs = gql`
       profilePic: String
     ): Auth
     login(email: String!, password: String!): Auth
-    addFriend(username: String!): User
+    addFriend(username: String!): Auth
     addPost(postImage: String!, postText: String!): Post
     addComment(postId: ID!, commentText: String!): Post
-    removeFriend(username: String!): User
+    removeFriend(username: String!): Auth
     removePost(_id: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
   }

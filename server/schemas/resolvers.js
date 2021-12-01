@@ -34,12 +34,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    // friends: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return User.findOne({ _id: context.user._id });
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
   },
 
   Mutation: {
@@ -87,7 +81,8 @@ const resolvers = {
           { $addToSet: { friends: args.username } }
         );
 
-        return user;
+        const token = signToken(user);
+        return { token, user };
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -127,15 +122,12 @@ const resolvers = {
     },
     removeFriend: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findOneAndDelete(
+        const user = await User.findOneAndUpdate(
           { _id: context.user._id },
-          {
-            $pull: {
-              friends: args.username,
-            },
-          }
+          { $pull: { friends: args.username } }
         );
-        return user;
+        const token = signToken(user);
+        return { token, user };
       }
       throw new AuthenticationError('You need to be logged in!');
     },

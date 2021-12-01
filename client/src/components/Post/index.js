@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useLocation } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -15,10 +16,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import MoreVertIcon from '@mui/icons-material/MoreVert';
-import remi from '../../images/remi.png';
+
 import { QUERY_USER } from '../../utils/queries';
-import { ADD_FRIEND } from '../../utils/mutations';
+import { ADD_FRIEND, REMOVE_FRIEND } from '../../utils/mutations';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -32,47 +32,51 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function Post(props) {
+  const location = useLocation();
   const [expanded, setExpanded] = React.useState(false);
 
-  const { loading, data } = useQuery(QUERY_USER, {
-      variables: { username: props.postAuthor },
-  });
-
   const [addFriend] = useMutation(ADD_FRIEND);
+  const [removeFriend] = useMutation(REMOVE_FRIEND);
+
+  const { loading, data } = useQuery(QUERY_USER, {
+    variables: { username: props.postAuthor },
+  });
 
   if (loading) {
     return <div>Loading...</div>;
-  } 
-  
+  }
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const handleAddFriend = () => {
-    addFriend({
-      variables: { username: props.postAuthor }
-    })
+  const handleFriendship = () => {
+    location.pathname === '/Discover'
+      ? addFriend({
+          variables: { username: props.postAuthor },
+        })
+      : removeFriend({
+          variables: { username: props.postAuthor },
+        });
   };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar 
+
+             <Avatar 
             sx={{ bgcolor: 'black' }} 
             aria-label="recipe"
             src={data.user.profilePic}
           />
         }
-        title={
-          <Typography>{props.postAuthor}</Typography>
-        }
-      >
-      </CardHeader>
+        title={<Typography>{props.postAuthor}</Typography>}
+      ></CardHeader>
       <CardMedia
         component="img"
         height="194"
-        image={remi}
+        src={props.postImage}
         alt="Paella dish"
       />
       <CardActions disableSpacing>
@@ -82,10 +86,7 @@ export default function Post(props) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-        <IconButton 
-          aria-label="follow"
-          onClick={handleAddFriend}
-        >
+        <IconButton aria-label="follow" onClick={handleFriendship}>
           <AddIcon />
         </IconButton>
         <ExpandMore
@@ -99,16 +100,9 @@ export default function Post(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-
-          <Typography paragraph>
-          {props.postText}
-          </Typography>
+          <Typography paragraph>{props.postText}</Typography>
         </CardContent>
       </Collapse>
     </Card>
   );
 }
-
-
-
-
