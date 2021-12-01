@@ -12,7 +12,7 @@ import '../ProfileSettings/ProfileSettings.css'
 
 import { UPDATE_USER } from '../../utils/mutations';
 import { uploadFile } from 'react-s3';
-import changePic from '../../images/photoChange.png';
+import changePic from '../../images/puppyPic.svg';
 
 const S3_BUCKET = process.env.REACT_APP_BUCKET_NAME
 const REGION = process.env.REACT_APP_REGION
@@ -136,7 +136,7 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
           <div 
             style={{ position: 'absolute', top: '20px', color: 'black', backgroundColor: 'transparent' }}
             className={classes.overlay}
-          ><img alt='' src={`${changePic}`}></img></div>
+          ><img alt='' width="80px" src={`${changePic}`}></img></div>
         </CardActionArea>
       </label>
       <CardContent>
