@@ -14,7 +14,6 @@ import '../PersonalPost/PersonalPost.css';
 import { REMOVE_POST } from '../../utils/mutations';
 
 // import MoreVertIcon from '@mui/icons-material/MoreVert';
-// import remi from '../../images/remi.png';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;

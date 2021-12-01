@@ -17,7 +17,6 @@ import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-// import remi from '../../images/remi.png';
 import { QUERY_USER } from '../../utils/queries';
 import { ADD_FRIEND, REMOVE_FRIEND } from '../../utils/mutations';
 
