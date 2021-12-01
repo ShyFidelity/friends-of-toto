@@ -1,15 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 
-:root {
-
-  --space-cadet: #22223bff;
---cinnamon-satin: #ce6a85ff;
---cg-blue: #087ca7ff;
---french-bistre: #846c5bff;
---isabelline: #f2e9e4ff;
-}
-
 
 
 .container {
@@ -73,16 +64,5 @@ p div {
   }
 } */
 
-.App-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
 
