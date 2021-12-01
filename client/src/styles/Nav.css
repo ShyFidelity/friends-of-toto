@@ -13,14 +13,10 @@
 
   .css-19r6kue-MuiContainer-root {
     background-color: var(--space-cadet);
-    color: var(--isabelline);
+    color: var(--old-lace);
     padding: 1%;
   }
 
-  .MuiCardMedia-root{
-    background-color: var(--old-lace);
-
-  }
 
   .MuiCardActions-root{
     color: var(--old-lace);
@@ -28,10 +24,6 @@
     margin: 1%;
   }
 
-  .MuiCardContent-root{
-    background-color: var(--almond);
-
-  }
 
   .MuiButton-label {
     color: var(--old-lace);
