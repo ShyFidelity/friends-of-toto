@@ -75,7 +75,6 @@ const resolvers = {
       return { token, user };
     },
     addFriend: async (parent, args, context) => {
-      console.log(args)
       if (context.user) {
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
@@ -122,7 +121,6 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     removeFriend: async (parent, args, context) => {
-      console.log(args)
       if (context.user) {
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
