@@ -6,8 +6,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
-import './styles/App.css';
+import { ProfileProvider } from './utils/GlobalState';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -15,6 +14,8 @@ import Profile from './pages/Profile';
 import Following from './pages/Following';
 import Discover from './pages/Discover';
 import NewPost from './pages/NewPost';
+
+import './styles/App.css';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -40,6 +41,8 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+
+<ProfileProvider>
       <Router>
         <div className="container">
         <Switch>
@@ -55,6 +58,8 @@ function App() {
         </Switch>
         </div>
       </Router>
+ </ProfileProvider>
+
     </ApolloProvider>
   );
 }
