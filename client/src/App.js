@@ -14,6 +14,7 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import Following from './pages/Following';
 import Discover from './pages/Discover';
+import NewPost from './pages/NewPost';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -45,7 +46,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path='/login' component={Login} />
           <Route exact path="/signup" component={Signup} />
-          
+          <Route exact path="/newpost" component={NewPost} />
           <Route exact path="/me" component={Profile} />
           <Route exact path="/profile" component={Profile}/>
           <Route exact path="/profiles/:username" component={Profile} />

@@ -18,6 +18,7 @@ import Auth from '../../utils/auth';
 import { QUERY_ME } from '../../utils/queries';
 import Toto from '../../images/toto.svg';
 
+
 import '../../styles/Nav.css'
 
 const pages = ['Following', 'Discover' ];
