@@ -14,6 +14,20 @@ export default function MultilineTextFields() {
     setValue(event.target.value);
   };
 
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(newPost);
+
+    try {
+      const { data } = await newPost({
+        variables: { postText:value, postImage: value}
+      });
+    
+    } catch (error) {
+    console.log(error);  
+    }
+  }
+
   return (
 
     <div>
