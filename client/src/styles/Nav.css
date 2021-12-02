@@ -46,4 +46,10 @@
   .custom-link {
     font-family: 'Jaldi', sans-serif;
     color: var(--isabelline) !important;
+    padding: 1vw;
   }
+
+.drop-custom-link {
+  color: var(--space-cadet);
+  padding: 1vw;
+}

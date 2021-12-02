@@ -46,6 +46,20 @@ export const UPDATE_USER = gql`
   }
 `;
 
+export const NEW_POST = gql`
+
+mutation newPost(
+  $postImage: String!
+  $postText: String! 
+
+) {
+  newPost(
+    postImage: $postImage
+    postText: $postText
+  )
+}
+`
+
 export const REMOVE_POST = gql`
   mutation removePost($_id: ID!) {
     removePost(_id: $_id) {

@@ -25,11 +25,15 @@
 
   }
 
-  .MuiInputBase-input {
+  .MuiInputBase-input{
       color: var(--space-cadet);
-      
     font-family: 'Jaldi', sans-serif;
 
+  }
+  
+  .MuiInputBase-input {
+    color: var(--space-cadet) !important;
+    font-family: 'Jaldi', sans-serif !important;
   }
 
   .MuiCardActions-root{

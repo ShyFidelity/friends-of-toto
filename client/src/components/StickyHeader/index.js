@@ -15,10 +15,12 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import UploadButton from '../Upload/UploadButton';
 import {Link} from 'react-router-dom'
 import Auth from '../../utils/auth';
 import { QUERY_ME } from '../../utils/queries';
 import Toto from '../../images/toto.svg';
+
 
 import '../../styles/Nav.css'
 
@@ -104,7 +106,7 @@ const StickyHeader = () => {
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
                     <Link 
-                      className="custom-link"
+                      className='drop-custom-link'
                       to={`/${page}`}
                     >
                       {page} 
@@ -168,7 +170,7 @@ const StickyHeader = () => {
                   textAlign="center"
                 >
                   <Link 
-                    className='custom-link'
+                    className='drop-custom-link'
                     to='/me'
                   >
                     Profile 
@@ -178,6 +180,7 @@ const StickyHeader = () => {
               <MenuItem  
                 onClick={handleCloseUserMenu}>
                 <Typography
+                className='drop-custom-link'
                   style={{ padding:'5px' }}
                   textAlign="center"
                   onClick={logout}
