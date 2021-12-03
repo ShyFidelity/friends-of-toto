@@ -11,20 +11,21 @@
   min-height: 445px;
   padding: 6%;
   background-color: var(--isabelline) !important;
+  margin: 5%;
 }
 
 form {
-display: flex;
-flex-direction: column;
-flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 2%;
   padding: 2%;
- 
 }
 
 .form-input {
-    padding: 2%;
-    border-bottom: var(--independence) 1px solid;
+  padding: 2%;
+  border-bottom: var(--independence) 1px solid;
 }
 
 input {
@@ -35,12 +36,15 @@ input {
   opacity: 80%;
 }
 
-button {
-  color: var(--white);
-  background-color: var(--dark);
+.submit-btn {
+  font-size: 18px;
+  background-color: var(--silver-pink);
   border: 1px transparent solid;
   border-radius: 8px;
   padding: 1%;
+  margin: 2vh;
+  margin-left: 4vh;
+  margin-right: 4vh;
 }
 
 a:visited {

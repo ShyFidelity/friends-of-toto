@@ -5,10 +5,11 @@ import Box from '@mui/material/Box';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import { makeStyles } from '@material-ui/core/styles';
+import puppyPaw from '../images/puppypaw.svg'
 
 import Auth from '../utils/auth';
 import '../styles/Signup.css'
-import { paw } from '../../images/pawprint.png'
+
 const useStyles = makeStyles({
   root: {
    width: 500,
@@ -111,14 +112,14 @@ const Signup = () => {
                     value={formState.password}
                     onChange={handleChange}
                   />
-                  <button
-                    style={{ cursor: 'pointer' }}
+                  <button className="submit-btn"
                     type="submit"
                   >
                     Submit 
-                   <img href= { paw } alt= "paw print" />
+                    <img width="20px" src={puppyPaw} alt="puppy paw" />
                   </button>
                 </form>
+          
                 <p>Already Registered? <button><Link to="/login">Login</Link></button></p>
               </div>
             )}
