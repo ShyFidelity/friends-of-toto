@@ -1,29 +1,49 @@
+:root {
+  --space-cadet: #22223bff;
+  --independence: #4a4e69;
+  --heliotrope-gray: #9a8c98;
+  --silver-pink: #c9ada7;
+  --isabelline: rgb(242, 233, 228);
+}
 
+.MuiPaper-root {
+  min-width: 345px;
+  min-height: 445px;
+  padding: 6%;
+  background-color: var(--isabelline) !important;
+}
 
+form {
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+  margin: 2%;
+  padding: 2%;
+ 
+}
 
-.form {
-    margin: 1%;
-    padding: 1%;
+.form-input {
+    padding: 2%;
+    border-bottom: var(--independence) 1px solid;
 }
 
 input {
-    padding: 1%;
-    margin: 0.5vw;
-    border: 1px solid var(--dark);
-    border-radius: 4px;
-    opacity: 80%;
-
+  padding: 1%;
+  margin: 0.5vw;
+  border: 1px solid var(--dark);
+  border-radius: 4px;
+  opacity: 80%;
 }
 
 button {
-    color: var(--white);
-    background-color: var(--dark);
-    border: 1px transparent solid;
-    border-radius: 8px;
-    padding: 1%;
+  color: var(--white);
+  background-color: var(--dark);
+  border: 1px transparent solid;
+  border-radius: 8px;
+  padding: 1%;
 }
 
 a:visited {
-    color: var(--white);
-    text-decoration: none;
-  }
+  color: var(--white);
+  text-decoration: none;
+}

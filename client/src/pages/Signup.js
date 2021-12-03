@@ -1,13 +1,36 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Auth from '../utils/auth';
 import '../styles/Signup.css'
+import { paw } from '../../images/pawprint.png'
+const useStyles = makeStyles({
+  root: {
+   width: 500,
+
+    position: 'relative'
+  },
+  overlay: {
+    height: '100%',
+    width: '100%',
+    opacity: '0',
+    '&:hover' : {
+      opacity: '1'
+    }
+  },
+  media: {
+    height: 345,
+    maxWidth: 345
+  },
+});
 
 const Signup = () => {
+  const classes = useStyles();
   const [formState, setFormState] = useState({
     username: '',
     email: '',
@@ -40,17 +63,29 @@ const Signup = () => {
   };
 
   return (
-      <div className="page">
-        <div className="card">
+    
+    <div className="page">  
+         <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        '& > :not(style)': {
+          m: 1,
+          width: 128,
+          height: 128,
+        },
+      }}
+    >
+      
+      <Paper className={classes.root}>
           <h3>Sign Up</h3>
-          <div className="card-body">
             {data ? (
               <p>
                 Success! You may now head{' '}
                 <Link to="/profile">to your Profile!</Link>
               </p>
             ) : (
-              <div className="form">
+              <div>
                 <form onSubmit={handleFormSubmit}>
                   <input
                     className="form-input"
@@ -80,7 +115,8 @@ const Signup = () => {
                     style={{ cursor: 'pointer' }}
                     type="submit"
                   >
-                    Submit
+                    Submit 
+                   <img href= { paw } alt= "paw print" />
                   </button>
                 </form>
                 <p>Already Registered? <button><Link to="/login">Login</Link></button></p>
@@ -92,9 +128,11 @@ const Signup = () => {
                 {error.message}
               </div>
             )}
-          </div>
+         
+        
+        </Paper>
+        </Box>
         </div>
-      </div>
 
   );
 };
