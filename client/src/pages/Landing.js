@@ -26,10 +26,9 @@ export default function Landing() {
         <p>
           A social network for animals because people talk too much. 
         </p>
-        <ButtonGroup color="primary" variant="contained" aria-label="contained secondary button group">
-          <Button className="button"><Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>Login</Link></Button>
-          <Button className="button"><Link to='/signup' style={{ textDecoration: 'none', color: 'white' }}>Create Account</Link></Button>
-        </ButtonGroup>
+          <Button className="landingButton"><Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>Login</Link></Button>
+          <Button className="landingButton"><Link to='/signup' style={{ textDecoration: 'none', color: 'white' }}>Create Account</Link></Button>
+    
       </header>
     </div>
   )

@@ -26,7 +26,7 @@ export default function MultilineTextFields() {
     } catch (error) {
     console.log(error);  
     }
-  }
+  };
 
   return (
 

@@ -7,8 +7,9 @@
   --isabelline: #f2e9e4ff;
   }
 
-  .MuiButtonBase-root{
-      color: var(--space-cadet) !important;
+ .landingButton {
+      background-color: var(--space-cadet) !important;
+      margin: 2% !important;
   }
 
 
