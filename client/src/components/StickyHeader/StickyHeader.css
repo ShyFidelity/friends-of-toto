@@ -1,18 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jaldi:wght@700&display=swap');
 
 
-:root {
-
-  --space-cadet: #22223bff;
---cinnamon-satin: #ce6a85ff;
---cg-blue: #087ca7ff;
---french-bistre: #846c5bff;
---isabelline: #f2e9e4ff;
---almond: #f1dac4;
---old-lace: #faf2e5;
-}
-
-
 
   .MuiContainer-root {
     font-family: 'Jaldi', sans-serif;
@@ -32,7 +20,10 @@
   .MuiButton-label {
     color: var(--old-lace);
   }
-
+  
+.MuiAvatar-img {
+  padding: 2%;
+}
   
 
   .unselected {
