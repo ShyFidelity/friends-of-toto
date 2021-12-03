@@ -18,13 +18,14 @@
   --heliotrope-gray: #9a8c98;
   --silver-pink: #c9ada7;
   --isabelline: rgb(242, 233, 228);
+  --isabelline-opacity77: rgba(242, 233, 228, 0.77);
 }
 
 .MuiPaper-root {
   min-width: 345px;
   min-height: 445px;
   padding: 6%;
-  background-color: var(--isabelline) !important;
+  background-color: var(--isabelline-opacity77) !important;
   margin: 5%;
 }
 h3 {
