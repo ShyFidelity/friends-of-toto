@@ -7,6 +7,7 @@ import StickyHeader from '../components/StickyHeader/index';
 import Post from '../components/Post/index';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import '../styles/Discover.css'
 
 
 export default function Discover() {
@@ -23,8 +24,7 @@ export default function Discover() {
       <div className="page">
 
         <p>
-          Posts from all account will appear here so you can discover new
-          friends to follow!
+          Look who's at the park today! 
         </p>
         {loading ? (
           <div>Loading...</div>
