@@ -1,18 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@font-face {
+  font-family: "little-dinosaur";
+  src: url(Little-dinosaur-Cute-Font/fonts/LittleDinosaur-Bold.otf);
+}
 
+@font-face {
+  font-family: "little-dinosaur-lite";
+  src: url(Little-dinosaur-Cute-Font/fonts/LittleDinosaur.otf);
+}
+
+@font-face {
+  font-family: "little-dinosaur-script";
+  src: url(Little-dinosaur-Cute-Font/fonts/LittleDinosaurScript.otf);
+}
 
 
 
 .container {
   text-align: center;
-  background-image: url(../images/fotobg2.png);
+  background-image: url(../images/fototobg5-01.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
   min-width: 100vw;
   min-height: 100vh;
-  /* display: flex;
+  /* display: flex;50
   flex-direction: row;
   justify-content: center; */
 }

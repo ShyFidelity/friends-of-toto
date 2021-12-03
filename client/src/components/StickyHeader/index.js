@@ -19,10 +19,10 @@ import UploadButton from '../Upload/UploadButton';
 import {Link} from 'react-router-dom'
 import Auth from '../../utils/auth';
 import { QUERY_ME } from '../../utils/queries';
-import Toto from '../../images/toto.svg';
+import Toto from '../../images/totothicc.svg';
 
 
-import '../../styles/Nav.css'
+import '../StickyHeader/StickyHeader.css'
 
 const pages = ['Following', 'Discover' ];
 
@@ -142,7 +142,7 @@ const StickyHeader = () => {
               </Button>
             ))}
           </Box>
-          <UploadButton />
+          <UploadButton className="upload-btn" />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

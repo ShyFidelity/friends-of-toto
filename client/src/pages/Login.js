@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-import '../styles/Login.css'
+import '../styles/Form.css'
 
 import Auth from '../utils/auth';
 
@@ -47,6 +47,7 @@ const Login = (props) => {
   return (
     
     <div className="page">
+    <div className="signup-login-card">
       <h3>Log In</h3>
           <div className="card-body">
             {data ? (
@@ -73,15 +74,15 @@ const Login = (props) => {
                     value={formState.password}
                     onChange={handleChange}
                   />
-                  <button
-                    className="btn btn-block btn-primary"
+                  <button 
+                    className="submit-btn"
                     style={{ cursor: 'pointer' }}
                     type="submit"
                   >
                     Submit
                   </button>
                 </form>
-                <p>New Here? <button><Link to="/signup">Create Account</Link></button></p>
+                <p>New Here? <button className="login-btn"><Link to="/signup">Create Account</Link></button></p>
               </div>
             )}
 
@@ -90,6 +91,7 @@ const Login = (props) => {
                 {error.message}
               </div>
             )}
+          </div>
           </div>
     </div>
   );

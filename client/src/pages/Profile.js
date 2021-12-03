@@ -47,7 +47,7 @@ export default function Profile() {
     <>
       <StickyHeader />
       <div className="page">
-        <Box className="profileBox" sx={{ flexGrow: 1 }}>
+        <Box className="profileBox" style={{ width: 900 }} sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             <Grid item xs={4}>
               <ProfileSettings

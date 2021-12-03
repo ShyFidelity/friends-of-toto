@@ -24,7 +24,7 @@ export default function Following() {
         {isIdle ? (
           <div>Loading...</div>
         ) : (
-          <Box sx={{ flexGrow: 1 }} style={{ width: '80%' }}>
+          <Box sx={{ flexGrow: 1 }} style={{ width: 900 }}>
             <Grid container spacing={2}>
               {friendPosts ? (
                 friendPosts.map((post) => (

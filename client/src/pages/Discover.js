@@ -5,16 +5,23 @@ import Grid from '@mui/material/Grid';
 
 import StickyHeader from '../components/StickyHeader/index';
 import Post from '../components/Post/index';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 export default function Discover() {
   const { loading, data } = useQuery(QUERY_POSTS);
-
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('xs'))
   const posts = data?.posts || [];
 
   return (
+      
+
     <>
       <StickyHeader />
       <div className="page">
+
         <p>
           Posts from all account will appear here so you can discover new
           friends to follow!
@@ -22,7 +29,7 @@ export default function Discover() {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <Box sx={{ flexGrow: 1 }} style={{ width: '80%' }}>
+          <Box sx={{ flexGrow: 1 }} style={{ width: 900 }}>
             <Grid container spacing={2}>
               {posts ? (
                 posts.map((post) => (

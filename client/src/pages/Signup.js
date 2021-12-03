@@ -1,37 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Paper from '@mui/material/Paper';
+
 import Box from '@mui/material/Box';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-import { makeStyles } from '@material-ui/core/styles';
+
 import puppyPaw from '../images/puppypaw.svg'
 
 import Auth from '../utils/auth';
-import '../styles/Signup.css'
+import '../styles/Form.css'
 
-const useStyles = makeStyles({
-  root: {
-   width: 500,
 
-    position: 'relative'
-  },
-  overlay: {
-    height: '100%',
-    width: '100%',
-    opacity: '0',
-    '&:hover' : {
-      opacity: '1'
-    }
-  },
-  media: {
-    height: 345,
-    maxWidth: 345
-  },
-});
 
 const Signup = () => {
-  const classes = useStyles();
+
   const [formState, setFormState] = useState({
     username: '',
     email: '',
@@ -78,7 +60,7 @@ const Signup = () => {
       }}
     >
       
-      <Paper className={classes.root}>
+      <div className="signup-login-card">
           <h3>Sign Up</h3>
             {data ? (
               <p>
@@ -131,7 +113,7 @@ const Signup = () => {
             )}
          
         
-        </Paper>
+        </div>
         </Box>
         </div>
 
