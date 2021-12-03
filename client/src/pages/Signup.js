@@ -120,7 +120,7 @@ const Signup = () => {
                   </button>
                 </form>
           
-                <p>Already Registered? <button><Link to="/login">Login</Link></button></p>
+                <p>Already Registered? <button className="login-btn"><Link to="/login">Login</Link></button></p>
               </div>
             )}
 
