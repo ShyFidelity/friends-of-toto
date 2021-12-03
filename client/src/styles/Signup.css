@@ -21,12 +21,15 @@
   --isabelline-opacity77: rgba(242, 233, 228, 0.77);
 }
 
-.MuiPaper-root {
+.signup-login-card {
   min-width: 345px;
   min-height: 445px;
   padding: 6%;
   background-color: var(--isabelline-opacity77) !important;
   margin: 5%;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  box-shadow: .1em 0 .2em .01em var(--heliotrope-gray);
 }
 h3 {
     font-size: 28px;

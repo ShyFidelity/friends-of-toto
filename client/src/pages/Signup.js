@@ -78,7 +78,7 @@ const Signup = () => {
       }}
     >
       
-      <Paper className={classes.root}>
+      <div className="signup-login-card">
           <h3>Sign Up</h3>
             {data ? (
               <p>
@@ -131,7 +131,7 @@ const Signup = () => {
             )}
          
         
-        </Paper>
+        </div>
         </Box>
         </div>
 

@@ -5,14 +5,14 @@
 
 .container {
   text-align: center;
-  background-image: url(../images/fotobg2.png);
+  background-image: url(../images/fototobg5-01.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
   min-width: 100vw;
   min-height: 100vh;
-  /* display: flex;
+  /* display: flex;50
   flex-direction: row;
   justify-content: center; */
 }
