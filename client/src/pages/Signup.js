@@ -116,7 +116,7 @@ const Signup = () => {
                     type="submit"
                   >
                     Submit 
-                    <img width="20px" src={puppyPaw} alt="puppy paw" />
+                    <img style={{ padding: 3}} width="20px" src={puppyPaw} alt="puppy paw" />
                   </button>
                 </form>
           
@@ -126,7 +126,7 @@ const Signup = () => {
 
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
+                <p> Ruh-Roh! You didn't fill in all fields!</p>
               </div>
             )}
          

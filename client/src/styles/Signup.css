@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "little-dinosaur";
+    src: url(Little-dinosaur-Cute-Font/fonts/LittleDinosaur-Bold.otf);
+  }
+
 :root {
   --space-cadet: #22223bff;
   --independence: #4a4e69;
@@ -38,10 +43,11 @@ input {
 
 .submit-btn {
   font-size: 18px;
+  font-family: "little-dinosaur";
   background-color: var(--silver-pink);
   border: 1px transparent solid;
   border-radius: 8px;
-  padding: 1%;
+  padding: 2%;
   margin: 2vh;
   margin-left: 4vh;
   margin-right: 4vh;
