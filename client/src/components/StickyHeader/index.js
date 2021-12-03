@@ -74,6 +74,7 @@ const StickyHeader = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+         
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -116,6 +117,7 @@ const StickyHeader = () => {
               ))}
             </Menu>
           </Box>
+       
           <Typography
             variant="h6"
             noWrap
@@ -140,7 +142,7 @@ const StickyHeader = () => {
               </Button>
             ))}
           </Box>
-
+          <UploadButton />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

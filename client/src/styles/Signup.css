@@ -1,29 +1,89 @@
+@font-face {
+    font-family: "little-dinosaur";
+    src: url(Little-dinosaur-Cute-Font/fonts/LittleDinosaur-Bold.otf);
+  }
 
+  @font-face {
+    font-family: "little-dinosaur-lite";
+    src: url(Little-dinosaur-Cute-Font/fonts/LittleDinosaur.otf);
+  }
 
+  @font-face {
+    font-family: "little-dinosaur-script";
+    src: url(Little-dinosaur-Cute-Font/fonts/LittleDinosaurScript.otf);
+  }
+:root {
+  --space-cadet: #22223bff;
+  --independence: #4a4e69;
+  --heliotrope-gray: #9a8c98;
+  --silver-pink: #c9ada7;
+  --isabelline: rgb(242, 233, 228);
+}
 
-.form {
-    margin: 1%;
-    padding: 1%;
+.MuiPaper-root {
+  min-width: 345px;
+  min-height: 445px;
+  padding: 6%;
+  background-color: var(--isabelline) !important;
+  margin: 5%;
+}
+h3 {
+    font-size: 28px;
+    font-family: "little-dinosaur";
+}
+
+p {
+    font-family: "little-dinosaur-lite";
+    font-size: 24px;
+}
+form {
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2%;
+  padding: 2%;
+}
+
+.form-input {
+    
+    color: var(--space-cadet) !important;
+  padding: 2%;
+  border-bottom: var(--independence) 1px solid;
+  opacity: 90%;
 }
 
 input {
-    padding: 1%;
-    margin: 0.5vw;
-    border: 1px solid var(--dark);
-    border-radius: 4px;
-    opacity: 80%;
-
+  padding: 1%;
+  margin: 0.5vw;
+  border: 1px solid var(--dark);
+  border-radius: 4px;
+  opacity: 80%;
 }
 
-button {
-    color: var(--white);
-    background-color: var(--dark);
-    border: 1px transparent solid;
-    border-radius: 8px;
-    padding: 1%;
+.submit-btn {
+  font-size: 18px;
+  font-family: "little-dinosaur";
+  background-color: var(--silver-pink);
+  border: 1px transparent solid;
+  border-radius: 8px;
+  padding: 2%;
+  margin: 2vh;
+  margin-left: 4vh;
+  margin-right: 4vh;
 }
+.login-btn {
+    font-size: 18px;
+  font-family: "little-dinosaur";
+  background-color: var(--silver-pink);
+  border: 1px transparent solid;
+  border-radius: 8px;
+  padding: 2%;
+  margin: 2%;
 
+}
 a:visited {
-    color: var(--white);
-    text-decoration: none;
-  }
+  color: var(--white);
+  text-decoration: none;
+}
