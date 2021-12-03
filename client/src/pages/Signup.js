@@ -23,7 +23,7 @@ const Signup = () => {
       [name]: value,
     });
   };
-// postText:value
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
