@@ -7,6 +7,9 @@ import StickyHeader from '../components/StickyHeader/index';
 import Post from '../components/Post/index';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import discoverDogs from '../images/discoverdogs-01.svg'
+import '../styles/Discover.css'
+
 
 
 export default function Discover() {
@@ -17,15 +20,15 @@ export default function Discover() {
 
   return (
       
-
+ 
     <>
       <StickyHeader />
+     
       <div className="page">
-
-        <p>
-          Posts from all account will appear here so you can discover new
-          friends to follow!
-        </p>
+      <img className="discoverDogs" src= {discoverDogs} width="300px" alt="2 dogs sniffing each others butts" />
+        <h2>
+          Look who's at the park today! 
+        </h2>
         {loading ? (
           <div>Loading...</div>
         ) : (
