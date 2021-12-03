@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import { useMutation } from "@apollo/client";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -13,7 +14,6 @@ import { NEW_POST } from "../utils/mutations";
 
 import { uploadFile } from "react-s3";
 import changePic from "../images/puppyPic.svg";
-import { tabClasses } from "@mui/material";
 
 const S3_BUCKET = process.env.REACT_APP_BUCKET_NAME;
 const REGION = process.env.REACT_APP_REGION;
@@ -48,59 +48,45 @@ const useStyles = makeStyles({
 });
 
 export default function NewPost() {
+  let history = useHistory();
   const classes = useStyles();
-
-  const [postText, setPostText] = useState({
-    postText: "", 
-   
-  });
-  const [postImage, setPostImage] = useState({
-    postImage: "", 
-   
-  });
+  const [postText, setPostText] = useState(null)
+  const [postImage, setPostImage] = useState(null)
 
   const [selectedFile, setSelectedFile] = useState(null);
-  const [fileName, setFileName] = useState(null);
+
   const [newPost] = useMutation(NEW_POST);
 
   const inputEl = React.useRef(null);
 
-  useEffect(() => {
-    const handleUpload = async (file) => {
-      uploadFile(file, config);
-      setFileName(file.name);
-    };
-    if (selectedFile) {
-      handleUpload(selectedFile);
-    }
-  }, [selectedFile]);
-
-  useEffect(() =>{
-    if(postImage !== ""){newPost({
-     variables: {postImage, postText} 
-    })}
-  }, [postImage])
+  const handleUpload = async (file) => {
+     uploadFile(file, config);
+  };
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    setPostText({
-      [name]: value,
-    });
+    const { value } = event.target;
+    setPostText(value);
   };
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
+    setPostImage(S3_URL + e.target.files[0].name);
   };
   const onImageClick = async () => {
     await inputEl.current.click();
   };
 
   const submitPost = () => {
-    setPostImage(
-      S3_URL + fileName
-    );
-   
+    handleUpload(selectedFile)
+    newPost({
+      variables: {
+        postText: postText,
+        postImage: postImage,
+      }
+    })
+    history.push('/me');
   };
+
   return (
     <Card className={classes.root}>
       <input
