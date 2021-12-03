@@ -86,8 +86,10 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addPost: async (parent, { postImage, postText }, context) => {
+    newPost: async (parent, { postImage, postText }, context) => {
+    
       if (context.user) {
+      
         const post = await Post.create({
           postImage,
           postText,

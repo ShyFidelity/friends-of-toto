@@ -56,7 +56,9 @@ mutation newPost(
   newPost(
     postImage: $postImage
     postText: $postText
-  )
+  ) {
+    _id
+  }
 }
 `
 
