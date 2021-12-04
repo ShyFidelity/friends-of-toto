@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { makeStyles } from "@material-ui/core/styles";
 import Box from '@mui/material/Box';
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardMedia from "@material-ui/core/CardMedia";
+
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
@@ -10,30 +14,84 @@ import puppyPaw from '../images/puppypaw.svg'
 import Auth from '../utils/auth';
 import '../styles/Form.css'
 
+import { uploadFile } from "react-s3";
+import changePic from "../images/puppyPic.svg";
 
+const S3_BUCKET = process.env.REACT_APP_BUCKET_NAME;
+const REGION = process.env.REACT_APP_REGION;
+const ACCESS_KEY = process.env.REACT_APP_ACCESS_ID;
+const SECRET_ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
+const S3_URL = process.env.REACT_APP_URL;
+
+const config = {
+  bucketName: S3_BUCKET,
+  region: REGION,
+  accessKeyId: ACCESS_KEY,
+  secretAccessKey: SECRET_ACCESS_KEY,
+};
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+    position: "relative",
+  },
+  overlay: {
+    height: "100%",
+    width: "100%",
+    opacity: "0",
+    "&:hover": {
+      opacity: "1",
+    },
+  },
+  media: {
+    height: 345,
+    maxWidth: 345,
+  },
+});
 
 const Signup = () => {
-
+  const classes = useStyles();
   const [formState, setFormState] = useState({
     username: '',
     email: '',
     password: '',
+    bio: '',
+    profilePic: ''
   });
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const [addUser, { error, data }] = useMutation(ADD_USER);
+
+  const inputEl = React.useRef(null);
+
+  const handleUpload = async (file) => {
+    uploadFile(file, config);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
     });
   };
 
+  const handleFileInput = (e) => {
+    setSelectedFile(e.target.files[0]);
+    setFormState({
+      ...formState,
+      profilePic: S3_URL + e.target.files[0].name
+    });
+  };
+
+  const onImageClick = async () => {
+    await inputEl.current.click();
+  };
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
-
+    handleUpload(selectedFile);
     try {
       const { data } = await addUser({
         variables: { ...formState },
@@ -46,7 +104,7 @@ const Signup = () => {
   };
 
   return (
-    
+
     <div className="page">  
          <Box
       sx={{
@@ -69,7 +127,9 @@ const Signup = () => {
               </p>
             ) : (
               <div>
-                <form onSubmit={handleFormSubmit}>
+                <form
+                  id='newProfile' 
+                  onSubmit={handleFormSubmit}>
                   <input
                     className="form-input"
                     placeholder="Your username"
@@ -94,6 +154,56 @@ const Signup = () => {
                     value={formState.password}
                     onChange={handleChange}
                   />
+                  <textarea
+                    form="newProfile"
+                    className="form-input"
+                    placeholder="Your Bio"
+                    name="bio"
+                    value={formState.bio}
+                    rows='3'
+                    wrap='soft'
+                    onChange={handleChange}
+                  />
+                  <Card className={classes.root}>
+                    <input
+                      accept="image/*"
+                      id="new-profile-pic-file"
+                      type="file"
+                      style={{ display: "none" }}
+                      ref={inputEl}
+                      onChange={handleFileInput}
+                    />
+                    <label htmlFor="new-profile-pic-file">
+                      <CardActionArea
+                        sx={{
+                          ":hover": {
+                            "& .overlay": {
+                              opacity: "1",
+                            },
+                          },
+                        }}
+                        onClick={() => onImageClick()}
+                      >
+                        <CardMedia
+                          component="img"
+                          className={classes.media}
+                          image={formState.profilePic}
+                          title="profile picture"
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "20px",
+                            color: "black",
+                            backgroundColor: "transparent",
+                          }}
+                          className={classes.overlay}
+                        >
+                          <img alt="" width="80px" src={`${changePic}`}></img>
+                        </div>
+                      </CardActionArea>
+                    </label>
+                  </Card>
                   <button className="submit-btn"
                     type="submit"
                   >
@@ -101,7 +211,7 @@ const Signup = () => {
                     <img style={{ padding: 3}} width="20px" src={puppyPaw} alt="puppy paw" />
                   </button>
                 </form>
-          
+
                 <p>Already Registered? <button className="login-btn"><Link to="/login">Login</Link></button></p>
               </div>
             )}
