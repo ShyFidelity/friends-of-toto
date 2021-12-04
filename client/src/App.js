@@ -41,25 +41,23 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-
-<ProfileProvider>
-      <Router>
-        <div className="container">
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/newpost" component={NewPost} />
-          <Route exact path="/me" component={Profile} />
-          <Route exact path="/profile" component={Profile}/>
-          <Route exact path="/profiles/:username" component={Profile} />
-          <Route exact path="/following" component={Following} />
-          <Route exact path="/discover" component={Discover} />
-        </Switch>
-        </div>
-      </Router>
- </ProfileProvider>
-
+      <ProfileProvider>
+            <Router>
+              <div className="container">
+              <Switch>
+                <Route exact path="/" component={Landing} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path="/signup" component={Signup} />
+                <Route exact path="/newpost" component={NewPost} />
+                <Route exact path="/me" component={Profile} />
+                <Route exact path="/profile" component={Profile}/>
+                <Route exact path="/profiles/:username" component={Profile} />
+                <Route exact path="/following" component={Following} />
+                <Route exact path="/discover" component={Discover} />
+              </Switch>
+              </div>
+            </Router>
+      </ProfileProvider>
     </ApolloProvider>
   );
 }

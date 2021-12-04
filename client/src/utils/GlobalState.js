@@ -1,14 +1,17 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext } from "react";
+import { useProfileReducer } from './reducers'
 
 const ProfileContext = createContext();
 const { Provider } = ProfileContext;
 
 const ProfileProvider = ({ value = [], ...props }) => {
-  const [state, setState] = useState({
-    profilePic: ''
+  const [state, dispatch] = useProfileReducer({
+    profilePic: '',
+    personalPosts: [],
+    friendPost: []
   });
 
-  return <Provider value={[state, setState]} {...props} />;
+  return <Provider value={[state, dispatch]} {...props} />;
 };
 
 const useProfileContext = () => {
