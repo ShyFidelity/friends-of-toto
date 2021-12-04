@@ -17,12 +17,13 @@ import '../styles/Form.css'
 import { uploadFile } from "react-s3";
 import changePic from "../images/puppyPic.svg";
 
-const S3_BUCKET = process.env.REACT_APP_BUCKET_NAME;
-const REGION = process.env.REACT_APP_REGION;
-const ACCESS_KEY = process.env.REACT_APP_ACCESS_ID;
-const SECRET_ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
-const S3_URL = process.env.REACT_APP_URL;
 
+const config = {
+  bucketName: process.env.REACT_APP_BUCKET_NAME,
+  region: process.env.REACT_APP_REGION,
+  accessKeyId: process.env.REACT_APP_ACCESS_ID,
+  secretAccessKey: process.env.REACT_APP_URL,
+};
 
 const useStyles = makeStyles({
   root: {
