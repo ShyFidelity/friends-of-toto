@@ -1,6 +1,10 @@
 import React from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
+import { useProfileContext } from '../utils/GlobalState';
+import {
+  UPDATE_PROFILE
+} from '../utils/actions';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import ProfileSettings from '../components/ProfileSettings/index';
@@ -9,38 +13,30 @@ import StickyHeader from '../components/StickyHeader/index';
 import UploadButton from '../components/Upload/UploadButton';
 import '../styles/Profile.css';
 
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
-
-import Auth from '../utils/auth';
+import { QUERY_ME } from '../utils/queries';
 
 export default function Profile() {
-  const { username } = useParams();
+  const [,dispatch] = useProfileContext();
+  
+  const { loading, data } = useQuery(QUERY_ME);
+ 
+  useEffect(() => {
+    if (data) {
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: {
+        _id: data.me._id,
+        profilePic: data.me.profilePic,
+        username: data.me.username,
+        bio: data.me.bio
+      }
+    });
+    }
+  }, [data, dispatch])
 
-  const { loading, data } = useQuery(!username ? QUERY_ME : QUERY_USER, {
-    variables: { username: username },
-  });
-
-  const profile = data?.me || data?.user || {};
-  // redirect to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
-    return <Redirect to="/me" />;
-  }
 
   if (loading) {
     return <div>Loading...</div>;
-  }
-
-  if (!profile?.username) {
-    return (
-      <>
-        <div className="page">
-          <h3>
-            You need to be logged in to see this. Use the navigation links above
-            to sign up or log in!
-          </h3>
-        </div>
-      </>
-    );
   }
 
   return (
@@ -50,18 +46,13 @@ export default function Profile() {
         <Box className="profileBox" style={{ width: 900 }} sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             <Grid item xs={4}>
-              <ProfileSettings
-                _id={profile._id}
-                profilePic={profile.profilePic}
-                username={profile.username}
-                bio={profile.bio}
-              />
+              <ProfileSettings />
             </Grid>
             <Grid item xs={8}>
               <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
-                  {profile.posts ? (
-                    profile.posts.map((post) => (
+                  {data.posts ? (
+                    data.posts.map((post) => (
                       <Grid key={post._id} item xs={4}>
                         <PersonalPost
                           key={post._id}
