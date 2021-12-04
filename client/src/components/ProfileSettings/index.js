@@ -66,20 +66,20 @@ export default function ProfileSettings() {
         type: UPDATE_PROFILE_PIC,
         profilePic: process.env.REACT_APP_URL + file.name
       });
-    }
-    if (selectedFile) {
-      handleUpload(selectedFile)
       updateUser({
         variables: {
           _id: _id,
           username: username,
           bio: bio,
-          profilePic: profilePic
+          profilePic: process.env.REACT_APP_URL + file.name
         }
       })
     }
+    if (selectedFile) {
+      handleUpload(selectedFile)
+    }
   }, [selectedFile])
-  
+
   const handleChange = (event) => {
     const { value } = event.target;
     dispatch({
