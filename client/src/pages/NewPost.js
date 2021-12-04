@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import { useMutation } from "@apollo/client";
 import { makeStyles } from "@material-ui/core/styles";
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
 export default function NewPost() {
   let history = useHistory();
   const classes = useStyles();
-  const [postText, setPostText] = useState(null)
+  const [postText, setPostText] = useState("")
   const [postImage, setPostImage] = useState(null)
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -54,9 +54,16 @@ export default function NewPost() {
 
   const inputEl = React.useRef(null);
 
-  const handleUpload = async (file) => {
-     uploadFile(file, config);
-  };
+  useEffect(() => {
+    const handleUpload = async (file) => {
+      await uploadFile(file, config);
+      setPostImage(process.env.REACT_APP_URL + file.name);
+    };
+
+    if (selectedFile) {
+      handleUpload(selectedFile)
+    }
+  }, [selectedFile])
 
   const handleChange = (event) => {
     const { value } = event.target;
@@ -65,14 +72,12 @@ export default function NewPost() {
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
-    setPostImage(process.env.REACT_APP_URL + e.target.files[0].name);
   };
   const onImageClick = async () => {
     await inputEl.current.click();
   };
 
   const submitPost = () => {
-    handleUpload(selectedFile)
     newPost({
       variables: {
         postText: postText,

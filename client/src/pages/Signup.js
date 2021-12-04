@@ -84,7 +84,6 @@ const Signup = () => {
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
   };
-
   const onImageClick = async () => {
     await inputEl.current.click();
   };
