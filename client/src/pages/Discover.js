@@ -27,7 +27,7 @@ export default function Discover() {
       <div className="page">
       <img className="discoverDogs" src= {discoverDogs} width="300px" alt="2 dogs sniffing each others butts" />
         <h2>
-          Look who's at the park today! 
+         Who's at the park today!?
         </h2>
         {loading ? (
           <div>Loading...</div>
