@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
+import { useProfileContext } from '../../utils/GlobalState';
+import {
+  UPDATE_PROFILE_PIC,
+  UPDATE_PROFILE_BIO
+} from '../../utils/actions';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -46,29 +51,19 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ProfileSettings({ _id, profilePic, username, bio }) {
+export default function ProfileSettings() {
+  const [state, dispatch] = useProfileContext();
   const classes = useStyles();
 
   const [isEditable, setIsEditable] = useState(false);
   const [buttonText, setButtonText] = useState("Edit");
-  const [profileSettings, setProfileSettings] = useState({
-    _id: _id,
-    profilePic: profilePic,
-    username: username,
-    bio: bio
-  });
+  const { _id, username, profilePic, bio } = state;
 
-  const [selectedFile, setSelectedFile] = useState(null);
+   const [selectedFile, setSelectedFile] = useState(null);
 
   const [updateUser] = useMutation(UPDATE_USER);
 
   const inputEl = React.useRef(null);
-
-  useEffect(() => {
-     updateUser({
-      variables: { ...profileSettings }
-    });
-  }, [profileSettings, updateUser]);
 
   useEffect(() => {
     const handleUpload = async (file) => {
@@ -76,34 +71,48 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
     }
     if (selectedFile) {
       handleUpload(selectedFile)
-      window.location.reload()
+      updateUser({
+        variables: {
+          _id: _id,
+          username: username,
+          bio: bio,
+          profilePic: profilePic
+        }
+      })
     }
   }, [selectedFile])
   
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    setProfileSettings({
-      ...profileSettings,
-      [name]: value,
+    const { value } = event.target;
+    dispatch({
+      type: UPDATE_PROFILE_BIO,
+      bio: value
     });
   };
 
-  const handleEdit = () => {
+  const handleSave = () => {
     setIsEditable(!isEditable);
     if (buttonText === "Edit") {
       setButtonText("Save")
     } else {
-      window.location.reload()
+      updateUser({
+        variables: {
+          _id: _id,
+          username: username,
+          bio: bio,
+          profilePic: profilePic
+        }
+      })
       setButtonText("Edit")
     }
   };
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
-    setProfileSettings({
-      ...profileSettings,
+    dispatch({
+      type: UPDATE_PROFILE_PIC,
       profilePic: S3_URL + e.target.files[0].name
-    })
+    });
   }
   const onImageClick = async () => {
     await inputEl.current.click();
@@ -132,8 +141,8 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
           <CardMedia
             component="img"
             className={classes.media}
-            image={profileSettings.profilePic}
-            title={`${profileSettings.username}'s Profile Pic`}
+            image={profilePic}
+            title={`${username}'s Profile Pic`}
           />
           <div 
             style={{ position: 'absolute', top: '20px', color: 'black', backgroundColor: 'transparent' }}
@@ -143,10 +152,9 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
       </label>
       <CardContent>
         <TextField
-          required
           id="filled-required"
           label="Username"
-          value={profileSettings.username}
+          value={username}
           name='username'
           variant="filled"
           disabled
@@ -158,7 +166,7 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
           label="Bio"
           multiline
           rows={5}
-          value={profileSettings.bio}
+          value={bio}
           name='bio'
           variant="filled"
           disabled={!isEditable}
@@ -166,7 +174,7 @@ export default function ProfileSettings({ _id, profilePic, username, bio }) {
         />
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" onClick={handleEdit}>
+        <Button size="small" color="primary" onClick={handleSave}>
           {buttonText}
         </Button>
       </CardActions>

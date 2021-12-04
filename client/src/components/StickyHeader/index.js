@@ -1,10 +1,5 @@
 import * as React from 'react';
-import { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
 import { useProfileContext } from '../../utils/GlobalState';
-import {
-  UPDATE_PROFILE_PIC
-} from '../../utils/actions';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -21,7 +16,6 @@ import MenuItem from '@mui/material/MenuItem';
 import UploadButton from '../Upload/UploadButton';
 import {Link} from 'react-router-dom'
 import Auth from '../../utils/auth';
-import { QUERY_ME } from '../../utils/queries';
 
 import Toto from '../../images/totothicc.svg';
 import '../StickyHeader/StickyHeader.css'
@@ -29,22 +23,12 @@ import '../StickyHeader/StickyHeader.css'
 const pages = ['Following', 'Discover' ];
 
 const StickyHeader = () => {
-  const [state, dispatch] = useProfileContext();
+  const [state] = useProfileContext();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const { data } = useQuery(QUERY_ME);
   const { profilePic } = state;
     
-  useEffect(() => {
-    if (data) {
-    dispatch({
-      type: UPDATE_PROFILE_PIC,
-      profilePic: data.me.profilePic
-    });
-    }
-  }, [data, dispatch])
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };

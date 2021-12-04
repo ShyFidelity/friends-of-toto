@@ -6,8 +6,11 @@ const { Provider } = ProfileContext;
 
 const ProfileProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useProfileReducer({
+    _id: '',
     profilePic: '',
-    personalPosts: [],
+    username: '',
+    bio: '',
+    posts: [],
     friendPost: []
   });
 
