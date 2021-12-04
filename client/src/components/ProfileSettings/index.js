@@ -19,8 +19,6 @@ import { UPDATE_USER } from '../../utils/mutations';
 import { uploadFile } from 'react-s3';
 import changePic from '../../images/puppyPic.svg';
 
-
-
 const config = {
     bucketName: process.env.REACT_APP_BUCKET_NAME, 
     region: process.env.REACT_APP_REGION,
@@ -63,7 +61,11 @@ export default function ProfileSettings() {
 
   useEffect(() => {
     const handleUpload = async (file) => {
-      uploadFile(file, config)
+      await uploadFile(file, config)
+      dispatch({
+        type: UPDATE_PROFILE_PIC,
+        profilePic: process.env.REACT_APP_URL + file.name
+      });
     }
     if (selectedFile) {
       handleUpload(selectedFile)
@@ -105,10 +107,6 @@ export default function ProfileSettings() {
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
-    dispatch({
-      type: UPDATE_PROFILE_PIC,
-      profilePic: process.env.REACT_APP_URL + e.target.files[0].name
-    });
   }
   const onImageClick = async () => {
     await inputEl.current.click();
