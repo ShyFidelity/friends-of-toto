@@ -51,8 +51,8 @@ export default function Profile() {
             <Grid item xs={8}>
               <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
-                  {data.posts ? (
-                    data.posts.map((post) => (
+                  {data.me.posts ? (
+                    data.me.posts.map((post) => (
                       <Grid key={post._id} item xs={4}>
                         <PersonalPost
                           key={post._id}

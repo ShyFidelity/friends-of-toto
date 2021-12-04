@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import Box from '@mui/material/Box';
@@ -65,9 +65,18 @@ const Signup = () => {
 
   const inputEl = React.useRef(null);
 
-  const handleUpload = async (file) => {
-    uploadFile(file, config);
-  };
+  useEffect(() => {
+    const handleUpload = async (file) => {
+      await uploadFile(file, config);
+      setFormState({
+        ...formState,
+        profilePic: S3_URL + file.name
+      });
+    };
+    if (selectedFile) {
+    handleUpload(selectedFile)
+    }
+  }, [selectedFile])
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -79,10 +88,6 @@ const Signup = () => {
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
-    setFormState({
-      ...formState,
-      profilePic: S3_URL + e.target.files[0].name
-    });
   };
 
   const onImageClick = async () => {
@@ -91,7 +96,6 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    handleUpload(selectedFile);
     try {
       const { data } = await addUser({
         variables: { ...formState },
