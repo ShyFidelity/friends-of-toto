@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
