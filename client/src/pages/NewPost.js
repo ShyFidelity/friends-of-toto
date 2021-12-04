@@ -22,10 +22,10 @@ const SECRET_ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
 const S3_URL = process.env.REACT_APP_URL;
 
 const config = {
-  bucketName: S3_BUCKET,
-  region: REGION,
-  accessKeyId: ACCESS_KEY,
-  secretAccessKey: SECRET_ACCESS_KEY,
+  bucketName: process.env.REACT_APP_BUCKET_NAME,
+  region: process.env.REACT_APP_REGION,
+  accessKeyId: process.env.REACT_APP_ACCESS_ID,
+  secretAccessKey:process.env.REACT_APP_ACCESS_KEY,
 };
 
 const useStyles = makeStyles({
@@ -70,7 +70,7 @@ export default function NewPost() {
 
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
-    setPostImage(S3_URL + e.target.files[0].name);
+    setPostImage(process.env.REACT_APP_URL + e.target.files[0].name);
   };
   const onImageClick = async () => {
     await inputEl.current.click();
