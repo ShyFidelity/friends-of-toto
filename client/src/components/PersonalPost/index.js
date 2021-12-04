@@ -51,7 +51,7 @@ export default function PersonalPost(props) {
         component="img"
         height="194"
         src={props.postImage}
-        alt="Paella dish"
+        alt="your pet"
       />
       <CardActions disableSpacing>
         <IconButton aria-label="delete" onClick={handleDelete}>

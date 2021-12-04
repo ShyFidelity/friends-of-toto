@@ -23,12 +23,6 @@ const ACCESS_KEY = process.env.REACT_APP_ACCESS_ID;
 const SECRET_ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
 const S3_URL = process.env.REACT_APP_URL;
 
-const config = {
-  bucketName: S3_BUCKET,
-  region: REGION,
-  accessKeyId: ACCESS_KEY,
-  secretAccessKey: SECRET_ACCESS_KEY,
-};
 
 const useStyles = makeStyles({
   root: {
@@ -70,7 +64,7 @@ const Signup = () => {
       await uploadFile(file, config);
       setFormState({
         ...formState,
-        profilePic: S3_URL + file.name
+        profilePic: process.env.REACT_APP_URL + file.name
       });
     };
     if (selectedFile) {
