@@ -19,17 +19,13 @@ import { UPDATE_USER } from '../../utils/mutations';
 import { uploadFile } from 'react-s3';
 import changePic from '../../images/puppyPic.svg';
 
-const S3_BUCKET = process.env.REACT_APP_BUCKET_NAME
-const REGION = process.env.REACT_APP_REGION
-const ACCESS_KEY = process.env.REACT_APP_ACCESS_ID
-const SECRET_ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
-const S3_URL = process.env.REACT_APP_URL
+
 
 const config = {
-    bucketName: S3_BUCKET,
-    region: REGION,
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_ACCESS_KEY,
+    bucketName: process.env.REACT_APP_BUCKET_NAME, 
+    region: process.env.REACT_APP_REGION,
+    accessKeyId:process.env.REACT_APP_ACCESS_ID,
+    secretAccessKey: process.env.REACT_APP_ACCESS_KEY,
 }
 
 const useStyles = makeStyles({
@@ -111,7 +107,7 @@ export default function ProfileSettings() {
     setSelectedFile(e.target.files[0]);
     dispatch({
       type: UPDATE_PROFILE_PIC,
-      profilePic: S3_URL + e.target.files[0].name
+      profilePic: process.env.REACT_APP_URL + e.target.files[0].name
     });
   }
   const onImageClick = async () => {
