@@ -11,10 +11,10 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { black } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { QUERY_USER } from '../../utils/queries';
@@ -87,7 +87,10 @@ export default function Post(props) {
           <ShareIcon />
         </IconButton>
         <IconButton aria-label="follow" onClick={handleFriendship}>
-          <AddIcon />
+          {location.pathname === '/Discover'
+            ? <AddIcon />
+            : <RemoveIcon />
+          }          
         </IconButton>
         <ExpandMore
           expand={expanded}
