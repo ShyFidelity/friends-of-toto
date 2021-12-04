@@ -16,11 +16,10 @@ import '../styles/Profile.css';
 import { QUERY_ME } from '../utils/queries';
 
 export default function Profile() {
-  const [state, dispatch] = useProfileContext();
+  const [,dispatch] = useProfileContext();
   
   const { loading, data } = useQuery(QUERY_ME);
-  const { _id, profilePic, username, bio, posts } = state;
-
+ 
   useEffect(() => {
     if (data) {
     dispatch({
@@ -47,18 +46,13 @@ export default function Profile() {
         <Box className="profileBox" style={{ width: 900 }} sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             <Grid item xs={4}>
-              <ProfileSettings
-                _id={_id}
-                profilePic={profilePic}
-                username={username}
-                bio={bio}
-              />
+              <ProfileSettings />
             </Grid>
             <Grid item xs={8}>
               <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
-                  {posts ? (
-                    posts.map((post) => (
+                  {data.posts ? (
+                    data.posts.map((post) => (
                       <Grid key={post._id} item xs={4}>
                         <PersonalPost
                           key={post._id}
