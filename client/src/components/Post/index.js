@@ -90,7 +90,7 @@ export default function Post(props) {
         src={props.postImage}
         alt="Paella dish"
       />
-      <CardActions disableSpacing>
+      <CardActions disableSpacing sx={{ justifyContent: 'space-between' }}>
         <IconButton aria-label="follow" onClick={handleFriendship}>
           {location.pathname === '/Discover' ? <AddIcon /> : <RemoveIcon />}
         </IconButton>
