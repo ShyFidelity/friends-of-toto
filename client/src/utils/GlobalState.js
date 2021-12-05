@@ -11,7 +11,7 @@ const ProfileProvider = ({ value = [], ...props }) => {
     username: '',
     bio: '',
     posts: [],
-    friendPost: []
+    friendPosts: []
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

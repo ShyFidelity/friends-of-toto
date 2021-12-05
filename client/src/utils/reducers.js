@@ -4,6 +4,7 @@ import {
   UPDATE_PROFILE_PIC,
   UPDATE_PROFILE,
   UPDATE_PERSONAL_POSTS,
+  UPDATE_FRIEND_POSTS
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -28,8 +29,13 @@ export const reducer = (state, action) => {
         ...state,
         posts: [...action.posts],
       };
+    case UPDATE_FRIEND_POSTS:
+      return {
+        ...state,
+        friendPosts: [...action.friendPosts],
+      };
     default:
-      return state;
+    return state;
   }
 };
 

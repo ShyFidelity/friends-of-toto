@@ -22,15 +22,15 @@ export default function Profile() {
  
   useEffect(() => {
     if (data) {
-    dispatch({
-      type: UPDATE_PROFILE,
-      payload: {
-        _id: data.me._id,
-        profilePic: data.me.profilePic,
-        username: data.me.username,
-        bio: data.me.bio
-      }
-    });
+      dispatch({
+        type: UPDATE_PROFILE,
+        payload: {
+          _id: data.me._id,
+          profilePic: data.me.profilePic,
+          username: data.me.username,
+          bio: data.me.bio
+        }
+      });
     }
   }, [data, dispatch])
 
