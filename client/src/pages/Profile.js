@@ -2,27 +2,24 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { useProfileContext } from '../utils/GlobalState';
-import {
-  UPDATE_PROFILE
-} from '../utils/actions';
+import { UPDATE_PROFILE } from '../utils/actions';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import ProfileSettings from '../components/ProfileSettings/index';
 import PersonalPost from '../components/PersonalPost/index';
 import StickyHeader from '../components/StickyHeader/index';
-import UploadButton from '../components/Upload/UploadButton';
 import '../styles/Profile.css';
 
 import { QUERY_ME } from '../utils/queries';
 
 export default function Profile() {
-  const [,dispatch] = useProfileContext();
-  
+  const [, dispatch] = useProfileContext();
+
   const { loading, data, refetch } = useQuery(QUERY_ME);
- 
+
   useEffect(() => {
-    refetch()
-  },[]);
+    refetch();
+  }, []);
 
   useEffect(() => {
     if (data) {
@@ -32,12 +29,11 @@ export default function Profile() {
           _id: data.me._id,
           profilePic: data.me.profilePic,
           username: data.me.username,
-          bio: data.me.bio
-        }
+          bio: data.me.bio,
+        },
       });
     }
-  }, [data, dispatch])
-
+  }, [data, dispatch]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -74,7 +70,6 @@ export default function Profile() {
             </Grid>
           </Grid>
         </Box>
-        <UploadButton />
       </div>
     </>
   );
