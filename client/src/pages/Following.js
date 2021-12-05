@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useFocusEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_FRIEND_POSTS } from '../utils/queries';
 import { useProfileContext } from '../utils/GlobalState';
@@ -14,16 +14,21 @@ import Post from '../components/Post/index';
 export default function Following() {
   const [validation, setValidation] = useState(true);
   const [state, dispatch] = useProfileContext();
-  const { data: user } = useQuery(QUERY_ME);
+  const { data: user, refetch: refetchMe } = useQuery(QUERY_ME);
   const userFriends = user?.me.friends;
 
-  const { data: posts } = useQuery(QUERY_FRIEND_POSTS, {
+  const { data: posts, refetch: refetchPosts } = useQuery(QUERY_FRIEND_POSTS, {
     variables: { friends: userFriends },
     enabled: !!userFriends,
   });
   const dbFriendPosts = posts?.friendPosts;
 
   const { friendPosts } = state;
+
+  useEffect(()=>{
+    refetchMe();
+    refetchPosts();
+  },[]);
 
   useEffect(() => {
     if(dbFriendPosts) {
@@ -35,7 +40,6 @@ export default function Following() {
   }, [dbFriendPosts, dispatch])
 
   useEffect(() => {
-    console.log(friendPosts)
     if (friendPosts !== []) {
       setValidation(false)
     }
