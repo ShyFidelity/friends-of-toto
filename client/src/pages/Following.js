@@ -28,7 +28,7 @@ export default function Following() {
   useEffect(()=>{
     refetchMe();
     refetchPosts();
-  },[]);
+  },[refetchMe, refetchPosts]);
 
   useEffect(() => {
     if(dbFriendPosts) {

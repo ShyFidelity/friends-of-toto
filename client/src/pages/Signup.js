@@ -51,8 +51,8 @@ const Signup = () => {
     email: '',
     password: '',
     bio: '',
-    profilePic: ''
   });
+  const [profilePic, setProfilePic] = useState("")
 
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -63,10 +63,7 @@ const Signup = () => {
   useEffect(() => {
     const handleUpload = async (file) => {
       await uploadFile(file, config);
-      setFormState({
-        ...formState,
-        profilePic: process.env.REACT_APP_URL + file.name
-      });
+      setProfilePic(process.env.REACT_APP_URL + file.name);
     };
     if (selectedFile) {
     handleUpload(selectedFile)
@@ -92,7 +89,7 @@ const Signup = () => {
     event.preventDefault();
     try {
       const { data } = await addUser({
-        variables: { ...formState },
+        variables: { ...formState, profilePic },
       });
 
       Auth.login(data.addUser.token);

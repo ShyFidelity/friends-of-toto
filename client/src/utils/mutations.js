@@ -26,14 +26,10 @@ export const ADD_USER = gql`
 
 export const UPDATE_USER = gql`
   mutation updateUser(
-    $_id: ID!
-    $username: String!
     $bio: String
     $profilePic: String
   ) {
     updateUser(
-      _id: $_id
-      username: $username
       bio: $bio
       profilePic: $profilePic
     ) {
