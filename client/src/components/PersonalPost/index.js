@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useMutation } from '@apollo/client';
 import { useProfileContext } from '../../utils/GlobalState';
 import {
@@ -35,13 +35,14 @@ export default function PersonalPost(props) {
   const [state, dispatch] = useProfileContext();
   const [expanded, setExpanded] = React.useState(false);
   const { posts } = state;
+  const hasDeletedPost = useRef(false);
   const [updatedPosts, setUpdatedPosts] = useState([...posts]);
    const [removePost] = useMutation(REMOVE_POST);
 
   
 
   useEffect(() => {
-    if (updatedPosts !== posts) {
+    if (hasDeletedPost.current) {
       dispatch({
           type: UPDATE_PERSONAL_POSTS,
           posts: updatedPosts
@@ -58,6 +59,7 @@ export default function PersonalPost(props) {
       await removePost({
         variables: { _id: props.postId },
       });
+      hasDeletedPost.current = true;
       setUpdatedPosts(posts.filter((post)=> post._id !== props.postId ))
     } catch (e) {
       console.error(e);

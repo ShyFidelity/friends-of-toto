@@ -5,8 +5,8 @@ import Grid from '@mui/material/Grid';
 
 import StickyHeader from '../components/StickyHeader/index';
 import Post from '../components/Post/index';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+// import { useTheme } from '@mui/material/styles';
+// import useMediaQuery from '@mui/material/useMediaQuery';
 import discoverDogs from '../images/discoverdogs-01.svg'
 import '../styles/Discover.css'
 
@@ -14,8 +14,8 @@ import '../styles/Discover.css'
 
 export default function Discover() {
   const { loading, data } = useQuery(QUERY_POSTS);
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('xs'))
+  // const theme = useTheme();
+  // const matches = useMediaQuery(theme.breakpoints.up('xs'))
   const posts = data?.posts || [];
 
   return (

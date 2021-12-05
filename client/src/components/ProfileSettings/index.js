@@ -68,9 +68,6 @@ export default function ProfileSettings() {
       });
       updateUser({
         variables: {
-          _id: _id,
-          username: username,
-          bio: bio,
           profilePic: process.env.REACT_APP_URL + file.name
         }
       })
@@ -78,7 +75,7 @@ export default function ProfileSettings() {
     if (selectedFile) {
       handleUpload(selectedFile)
     }
-  }, [selectedFile])
+  }, [selectedFile, dispatch, updateUser])
 
   const handleChange = (event) => {
     const { value } = event.target;
