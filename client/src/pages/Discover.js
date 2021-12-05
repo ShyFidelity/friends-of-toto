@@ -35,8 +35,7 @@ export default function Discover() {
           <Box sx={{ flexGrow: 1 }} style={{ width: 900 }}>
             <Grid container spacing={2}>
               {posts ? (
-                posts.map((post) => (
-                  <Grid key={post._id} item xs={4}>
+                posts.map((post) => (<Grid key={post._id} item xs={4}>
                     <Post
                       key={post._id}
                       postId={post._id}

@@ -25,8 +25,8 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
-    posts: async (parent, args) => {
-      return Post.find().sort({ createdAt: -1 });
+    posts: async (parent, args, context) => {
+      return Post.find({postAuthor: {$ne: context.user.username}}).sort({ createdAt: -1 });
     },
     me: async (parent, args, context) => {
       if (context.user) {

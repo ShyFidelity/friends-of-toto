@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
+import { useProfileContext } from '../../utils/GlobalState';
+import {
+  UPDATE_FRIEND_POSTS
+} from '../../utils/actions';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -32,6 +36,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function Post(props) {
+  const [, dispatch] = useProfileContext();
   const location = useLocation();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -51,13 +56,21 @@ export default function Post(props) {
   };
 
   const handleFriendship = () => {
-    location.pathname === '/Discover'
-      ? addFriend({
+    if (location.pathname === '/Discover' || location.pathname === '/discover') {
+      addFriend({
           variables: { username: props.postAuthor },
         })
-      : removeFriend({
+    }
+    else {
+      removeFriend({
           variables: { username: props.postAuthor },
-        });
+        })
+      const newFriendPosts = props.friendPosts.filter(post => (post.postAuthor !== props.postAuthor))
+      dispatch({
+        type: UPDATE_FRIEND_POSTS,
+        friendPosts: newFriendPosts
+      })
+    }
   };
 
   return (
