@@ -1,5 +1,10 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
+import { useProfileContext } from '../../utils/GlobalState';
+import {
+  UPDATE_PERSONAL_POSTS
+} from '../../utils/actions';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -27,8 +32,22 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function PersonalPost(props) {
+  const [state, dispatch] = useProfileContext();
   const [expanded, setExpanded] = React.useState(false);
-  const [removePost] = useMutation(REMOVE_POST);
+  const { posts } = state;
+  const [updatedPosts, setUpdatedPosts] = useState([...posts]);
+   const [removePost] = useMutation(REMOVE_POST);
+
+  
+
+  useEffect(() => {
+    if (updatedPosts !== posts) {
+      dispatch({
+          type: UPDATE_PERSONAL_POSTS,
+          posts: updatedPosts
+      })
+    }
+  }, [updatedPosts, dispatch])
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -39,7 +58,7 @@ export default function PersonalPost(props) {
       await removePost({
         variables: { _id: props.postId },
       });
-      window.location.reload();
+      setUpdatedPosts(posts.filter((post)=> post._id !== props.postId ))
     } catch (e) {
       console.error(e);
     }

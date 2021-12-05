@@ -21,7 +21,7 @@ export default function Profile() {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [posts]);
 
   useEffect(() => {
     if (data) {

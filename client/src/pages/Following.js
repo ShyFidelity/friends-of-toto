@@ -1,4 +1,4 @@
-import { useState, useEffect, useFocusEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_FRIEND_POSTS } from '../utils/queries';
 import { useProfileContext } from '../utils/GlobalState';
