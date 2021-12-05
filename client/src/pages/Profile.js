@@ -43,17 +43,17 @@ export default function Profile() {
     <>
       <StickyHeader />
       <div className="page">
-        <Box className="profileBox" style={{ width: 900 }} sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2}>
-            <Grid item xs={4}>
+        <Box className="profileBox" style={{ width: "95%" }} sx={{ flexGrow: 1 }}>
+          <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
+            <Grid item xs={12} sm={6} md={4}>
               <ProfileSettings />
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={12} sm={6} md={8}>
               <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
                   {data.me.posts ? (
                     data.me.posts.map((post) => (
-                      <Grid key={post._id} item xs={4}>
+                      <Grid key={post._id} item xs={12} md={6} lg={4}>
                         <PersonalPost
                           key={post._id}
                           postId={post._id}
