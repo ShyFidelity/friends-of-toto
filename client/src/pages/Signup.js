@@ -22,7 +22,7 @@ const config = {
   bucketName: process.env.REACT_APP_BUCKET_NAME,
   region: process.env.REACT_APP_REGION,
   accessKeyId: process.env.REACT_APP_ACCESS_ID,
-  secretAccessKey: process.env.REACT_APP_URL,
+  secretAccessKey:process.env.REACT_APP_ACCESS_KEY,
 };
 
 const useStyles = makeStyles({
@@ -133,7 +133,7 @@ const Signup = () => {
                     placeholder="Your username"
                     name="username"
                     type="text"
-                    value={formState.name}
+                    value={formState.username}
                     onChange={handleChange}
                   />
                   <input
