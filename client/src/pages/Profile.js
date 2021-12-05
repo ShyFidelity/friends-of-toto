@@ -18,8 +18,12 @@ import { QUERY_ME } from '../utils/queries';
 export default function Profile() {
   const [,dispatch] = useProfileContext();
   
-  const { loading, data } = useQuery(QUERY_ME);
+  const { loading, data, refetch } = useQuery(QUERY_ME);
  
+  useEffect(() => {
+    refetch()
+  },[]);
+
   useEffect(() => {
     if (data) {
       dispatch({
