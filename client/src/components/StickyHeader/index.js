@@ -14,13 +14,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import UploadButton from '../Upload/UploadButton';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 import Toto from '../../images/totothicc.svg';
-import '../StickyHeader/StickyHeader.css'
+import '../StickyHeader/StickyHeader.css';
 
-const pages = ['Following', 'Discover' ];
+const pages = ['Following', 'Discover'];
 
 const StickyHeader = () => {
   const [state] = useProfileContext();
@@ -28,7 +28,7 @@ const StickyHeader = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const { profilePic } = state;
-    
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -49,7 +49,7 @@ const StickyHeader = () => {
     Auth.logout();
   };
   return (
-     <AppBar position="static">
+    <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -58,11 +58,10 @@ const StickyHeader = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-               <img src={Toto} width="80px"  alt="" />
+            <img src={Toto} width="80px" alt="" />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-         
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -94,25 +93,22 @@ const StickyHeader = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link 
-                      className='drop-custom-link'
-                      to={`/${page}`}
-                    >
-                      {page} 
+                    <Link className="drop-custom-link" to={`/${page}`}>
+                      {page}
                     </Link>
                   </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-       
+
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-           <img src={Toto} width="80px" alt="" />
+            <img src={Toto} width="80px" alt="" />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -121,16 +117,17 @@ const StickyHeader = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                 <Typography textAlign="center">
-                      <Link 
-                      className="custom-link"
-                      to={`/${page}`}>
-                      {page} </Link>
-                      </Typography>
+                <Typography textAlign="center">
+                  <Link className="custom-link" to={`/${page}`}>
+                    {page}{' '}
+                  </Link>
+                </Typography>
               </Button>
             ))}
           </Box>
-          <UploadButton className="upload-btn" />
+          <Box sx={{ mr: '5vw' }}>
+            <UploadButton className="upload-btn" />
+          </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -153,31 +150,23 @@ const StickyHeader = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem 
-                onClick={handleCloseNavMenu}>                      
-                <Typography
-              
-                  textAlign="center"
-                >
-                  <Link 
-                    className='drop-custom-link'
-                    to='/me'
-                  >
-                    Profile 
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  <Link className="drop-custom-link" to="/me">
+                    Profile
                   </Link>
                 </Typography>
-              </MenuItem> 
-              <MenuItem  
-                onClick={handleCloseUserMenu}>
+              </MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
                 <Typography
-                className='drop-custom-link'
-                style={{  fontFamily: 'little-dinosaur' }} 
+                  className="drop-custom-link"
+                  style={{ fontFamily: 'little-dinosaur' }}
                   textAlign="center"
                   onClick={logout}
                 >
                   Logout
                 </Typography>
-              </MenuItem>   
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

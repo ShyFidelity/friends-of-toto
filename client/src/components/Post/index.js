@@ -16,7 +16,6 @@ import Typography from '@mui/material/Typography';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
 import { QUERY_USER } from '../../utils/queries';
 import { ADD_FRIEND, REMOVE_FRIEND } from '../../utils/mutations';
 
