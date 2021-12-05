@@ -2,9 +2,7 @@ import * as React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { useProfileContext } from '../../utils/GlobalState';
-import {
-  UPDATE_FRIEND_POSTS
-} from '../../utils/actions';
+import { UPDATE_FRIEND_POSTS } from '../../utils/actions';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -15,8 +13,6 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -56,20 +52,24 @@ export default function Post(props) {
   };
 
   const handleFriendship = () => {
-    if (location.pathname === '/Discover' || location.pathname === '/discover') {
+    if (
+      location.pathname === '/Discover' ||
+      location.pathname === '/discover'
+    ) {
       addFriend({
-          variables: { username: props.postAuthor },
-        })
-    }
-    else {
+        variables: { username: props.postAuthor },
+      });
+    } else {
       removeFriend({
-          variables: { username: props.postAuthor },
-        })
-      const newFriendPosts = props.friendPosts.filter(post => (post.postAuthor !== props.postAuthor))
+        variables: { username: props.postAuthor },
+      });
+      const newFriendPosts = props.friendPosts.filter(
+        (post) => post.postAuthor !== props.postAuthor
+      );
       dispatch({
         type: UPDATE_FRIEND_POSTS,
-        friendPosts: newFriendPosts
-      })
+        friendPosts: newFriendPosts,
+      });
     }
   };
 
@@ -77,9 +77,8 @@ export default function Post(props) {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-
-             <Avatar 
-            sx={{ bgcolor: 'black' }} 
+          <Avatar
+            sx={{ bgcolor: 'black' }}
             aria-label="recipe"
             src={data.user.profilePic}
           />
@@ -93,17 +92,8 @@ export default function Post(props) {
         alt="Paella dish"
       />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
         <IconButton aria-label="follow" onClick={handleFriendship}>
-          {location.pathname === '/Discover'
-            ? <AddIcon />
-            : <RemoveIcon />
-          }          
+          {location.pathname === '/Discover' ? <AddIcon /> : <RemoveIcon />}
         </IconButton>
         <ExpandMore
           expand={expanded}
