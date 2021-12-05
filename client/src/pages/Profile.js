@@ -13,9 +13,11 @@ import '../styles/Profile.css';
 import { QUERY_ME } from '../utils/queries';
 
 export default function Profile() {
-  const [, dispatch] = useProfileContext();
+  const [state, dispatch] = useProfileContext();
 
   const { loading, data, refetch } = useQuery(QUERY_ME);
+
+  const { posts } = state;
 
   useEffect(() => {
     refetch();
@@ -30,6 +32,7 @@ export default function Profile() {
           profilePic: data.me.profilePic,
           username: data.me.username,
           bio: data.me.bio,
+          posts: data.me.posts
         },
       });
     }
@@ -51,8 +54,8 @@ export default function Profile() {
             <Grid item xs={12} sm={6} md={8}>
               <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
-                  {data.me.posts ? (
-                    data.me.posts.map((post) => (
+                  {posts ? (
+                    posts.map((post) => (
                       <Grid key={post._id} item xs={12} md={6} lg={4}>
                         <PersonalPost
                           key={post._id}
