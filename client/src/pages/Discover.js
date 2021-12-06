@@ -8,7 +8,7 @@ import Post from '../components/Post/index';
 // import { useTheme } from '@mui/material/styles';
 // import useMediaQuery from '@mui/material/useMediaQuery';
 import discoverDogs from '../images/discoverdogs-01.svg'
-import '../styles/Discover.css'
+import '../styles/discoverFollowing.css'
 
 
 

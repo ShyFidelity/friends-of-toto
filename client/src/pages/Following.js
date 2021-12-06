@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 
 import StickyHeader from '../components/StickyHeader/index';
 import Post from '../components/Post/index';
-
+import '../styles/discoverFollowing.css'; 
 export default function Following() {
   const [validation, setValidation] = useState(true);
   const [state, dispatch] = useProfileContext();
@@ -49,7 +49,7 @@ export default function Following() {
     <>
       <StickyHeader />
       <div className="page">
-        <p>Posts from accounts you follow will appear here!</p>
+        <h2>Woof! Woof!</h2>
         {validation ? (
           <div>Loading...</div>
         ) : (
