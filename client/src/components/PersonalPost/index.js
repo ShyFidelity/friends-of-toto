@@ -106,7 +106,7 @@ export default function PersonalPost(props) {
         src={props.postImage}
         alt="your pet"
       />
-      <CardActions disableSpacing>
+      <CardActions disableSpacing sx={{ justifyContent: 'space-between' }}>
         <IconButton aria-label="delete" onClick={handleDelete}>
           <DeleteForeverIcon />
         </IconButton>
