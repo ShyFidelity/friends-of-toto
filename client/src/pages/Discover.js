@@ -43,6 +43,7 @@ export default function Discover() {
                       postAuthor={post.postAuthor}
                       postText={post.postText}
                       postImage={post.postImage}
+                      postComments={post.comments}
                     />
                   </Grid>
                 ))

@@ -87,3 +87,11 @@ export const REMOVE_FRIEND = gql`
     }
   }
 `;
+
+export const ADD_COMMENT = gql`
+  mutation addComment($_id: ID!, $commentText: String!) {
+    addComment(_id: $_id, commentText: $commentText) {
+      _id
+    }
+  }
+`

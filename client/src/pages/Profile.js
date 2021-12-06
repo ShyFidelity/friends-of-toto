@@ -62,6 +62,7 @@ export default function Profile() {
                           postId={post._id}
                           postText={post.postText}
                           postImage={post.postImage}
+                          postComments={post.comments}
                         />
                       </Grid>
                     ))

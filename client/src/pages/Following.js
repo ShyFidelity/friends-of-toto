@@ -64,6 +64,7 @@ export default function Following() {
                       postAuthor={post.postAuthor}
                       postText={post.postText}
                       postImage={post.postImage}
+                      postComments={post.comments}
                       friendPosts={friendPosts}
                     />
                   </Grid>
