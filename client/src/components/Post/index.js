@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { useProfileContext } from '../../utils/GlobalState';
@@ -13,11 +14,12 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import { TextField } from '@material-ui/core';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { QUERY_USER } from '../../utils/queries';
-import { ADD_FRIEND, REMOVE_FRIEND } from '../../utils/mutations';
+import { QUERY_USER, QUERY_POST } from '../../utils/queries';
+import { ADD_FRIEND, REMOVE_FRIEND, ADD_COMMENT } from '../../utils/mutations';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -33,14 +35,30 @@ const ExpandMore = styled((props) => {
 export default function Post(props) {
   const [, dispatch] = useProfileContext();
   const location = useLocation();
-  const [expanded, setExpanded] = React.useState(false);
-
+  const [expanded, setExpanded] = useState(false);
+  const [commentExpanded, setCommentExpanded] = useState(false);
+  const [newComment, setNewComment] = useState("");
+  const [commentState, setCommentState] = useState(false);
+ 
   const [addFriend] = useMutation(ADD_FRIEND);
   const [removeFriend] = useMutation(REMOVE_FRIEND);
+  const [addComment] = useMutation(ADD_COMMENT);
 
-  const { loading, data } = useQuery(QUERY_USER, {
+  const { loading, data: user } = useQuery(QUERY_USER, {
     variables: { username: props.postAuthor },
   });
+
+  const { data: post, refetch } = useQuery(QUERY_POST, {
+    variables: { _id: props.postId }
+  })
+
+  const comments = post?.post.comments || [];
+
+  useEffect(() => {
+    if (commentState) {
+      refetch()
+    }
+  }, [commentState, refetch])
 
   if (loading) {
     return <div>Loading...</div>;
@@ -49,6 +67,22 @@ export default function Post(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleExpandCommentClick = () => {
+    setCommentExpanded(!commentExpanded);
+  };
+
+  const handleChange = (e) => {
+    setNewComment(e.target.value)
+  } 
+
+  const handleNewComment = () => {
+    addComment({
+      variables: { _id: props.postId, commentText: newComment}
+    })
+    setCommentState(true)
+    setNewComment("")
+  }
 
   const handleFriendship = () => {
     if (
@@ -79,7 +113,7 @@ export default function Post(props) {
           <Avatar
             sx={{ bgcolor: 'black' }}
             aria-label="recipe"
-            src={data.user.profilePic}
+            src={user.user.profilePic}
           />
         }
         title={<Typography>{props.postAuthor}</Typography>}
@@ -106,7 +140,44 @@ export default function Post(props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>{props.postText}</Typography>
+          <ExpandMore
+            expand={commentExpanded}
+            onClick={handleExpandCommentClick}
+            aria-expanded={commentExpanded}
+            aria-label="show comments"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
         </CardContent>
+        <Collapse in={commentExpanded} timeout="auto" unmountOnExit>
+          <CardContent>
+          <TextField
+            id="filled"
+            label='comment'
+            multiline
+            rows={3}
+            value={newComment}
+            name='comment'
+            variant='filled'
+            onChange={handleChange}
+          />
+          <IconButton aria-label="follow" onClick={handleNewComment}>
+            <AddIcon />
+          </IconButton>
+          {comments ? (
+            comments.map((comment) => (
+              <div
+                key={comment._id}
+              >
+              <Typography>{comment.commentAuthor}</Typography>
+              <Typography paragraph>{comment.commentText}</Typography>
+              </div>
+            ))
+          ) : (
+            <div>Loading...</div>
+          )}
+          </CardContent>
+        </Collapse>
       </Collapse>
     </Card>
   );

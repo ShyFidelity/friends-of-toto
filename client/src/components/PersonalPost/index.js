@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { useState, useEffect, useRef } from 'react';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { useProfileContext } from '../../utils/GlobalState';
-import {
-  UPDATE_PERSONAL_POSTS
-} from '../../utils/actions';
+import { UPDATE_PERSONAL_POSTS } from '../../utils/actions';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -14,9 +12,12 @@ import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { TextField } from '@material-ui/core';
+import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import '../PersonalPost/PersonalPost.css';
-import { REMOVE_POST } from '../../utils/mutations';
+import { QUERY_POST } from '../../utils/queries';
+import { REMOVE_POST, ADD_COMMENT } from '../../utils/mutations';
 
 // import MoreVertIcon from '@mui/icons-material/MoreVert';
 
@@ -37,9 +38,24 @@ export default function PersonalPost(props) {
   const { posts } = state;
   const hasDeletedPost = useRef(false);
   const [updatedPosts, setUpdatedPosts] = useState([...posts]);
-   const [removePost] = useMutation(REMOVE_POST);
+  const [commentExpanded, setCommentExpanded] = useState(false);
+  const [newComment, setNewComment] = useState("");
+  const [commentState, setCommentState] = useState(false);
 
-  
+  const [removePost] = useMutation(REMOVE_POST);
+  const [addComment] = useMutation(ADD_COMMENT);
+
+  const { data: post, refetch } = useQuery(QUERY_POST, {
+    variables: { _id: props.postId }
+  })
+
+  const comments = post?.post.comments || [];
+
+  useEffect(() => {
+    if (commentState) {
+      refetch()
+    }
+  }, [commentState, refetch])
 
   useEffect(() => {
     if (hasDeletedPost.current) {
@@ -53,6 +69,22 @@ export default function PersonalPost(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleExpandCommentClick = () => {
+    setCommentExpanded(!commentExpanded);
+  };
+
+  const handleChange = (e) => {
+    setNewComment(e.target.value)
+  } 
+
+  const handleNewComment = () => {
+    addComment({
+      variables: { _id: props.postId, commentText: newComment}
+    })
+    setCommentState(true)
+    setNewComment("")
+  }
 
   const handleDelete = async () => {
     try {
@@ -74,7 +106,7 @@ export default function PersonalPost(props) {
         src={props.postImage}
         alt="your pet"
       />
-      <CardActions disableSpacing>
+      <CardActions disableSpacing sx={{ justifyContent: 'space-between' }}>
         <IconButton aria-label="delete" onClick={handleDelete}>
           <DeleteForeverIcon />
         </IconButton>
@@ -90,8 +122,45 @@ export default function PersonalPost(props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>{props.postText}</Typography>
+          <ExpandMore
+            expand={commentExpanded}
+            onClick={handleExpandCommentClick}
+            aria-expanded={commentExpanded}
+            aria-label="show comments"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
         </CardContent>
       </Collapse>
+      <Collapse in={commentExpanded} timeout="auto" unmountOnExit>
+          <CardContent>
+          <TextField
+            id="filled"
+            label='comment'
+            multiline
+            rows={3}
+            value={newComment}
+            name='comment'
+            variant='filled'
+            onChange={handleChange}
+          />
+          <IconButton aria-label="follow" onClick={handleNewComment}>
+            <AddIcon />
+          </IconButton>
+          {comments ? (
+            comments.map((comment) => (
+              <div
+                key={comment._id}
+              >
+              <Typography>{comment.commentAuthor}</Typography>
+              <Typography paragraph>{comment.commentText}</Typography>
+              </div>
+            ))
+          ) : (
+            <div>Loading...</div>
+          )}
+          </CardContent>
+        </Collapse>
     </Card>
   );
 }

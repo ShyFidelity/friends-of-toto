@@ -53,7 +53,7 @@ export default function Profile() {
             </Grid>
             <Grid item xs={12} sm={6} md={8}>
               <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
+                <Grid container spacing={1} sx={{ justifyContent: 'left' }}>
                   {posts ? (
                     posts.map((post) => (
                       <Grid key={post._id} item xs={12} md={6} lg={4}>
@@ -62,6 +62,7 @@ export default function Profile() {
                           postId={post._id}
                           postText={post.postText}
                           postImage={post.postImage}
+                          postComments={post.comments}
                         />
                       </Grid>
                     ))

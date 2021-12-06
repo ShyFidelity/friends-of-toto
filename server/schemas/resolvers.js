@@ -22,15 +22,15 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    post: async (parent, { postId }) => {
-      return Post.findOne({ _id: postId });
+    post: async (parent, { _id }) => {
+      return Post.findOne({ _id: _id }).populate('comments');
     },
     posts: async (parent, args, context) => {
-      return Post.find({postAuthor: {$ne: context.user.username}}).sort({ createdAt: -1 });
+      return Post.find({postAuthor: {$ne: context.user.username}}).populate('comments').sort({ createdAt: -1 });
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('posts');
+        return User.findOne({ _id: context.user._id }).populate({path: 'posts', populate: {path: 'comments'}});
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -103,10 +103,10 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { postId, commentText }, context) => {
+    addComment: async (parent, { _id, commentText }, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
-          { _id: postId },
+          { _id: _id },
           {
             $addToSet: {
               comments: { commentText, commentAuthor: context.user.username },

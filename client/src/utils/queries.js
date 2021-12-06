@@ -33,6 +33,12 @@ export const QUERY_ME = gql`
         postImage
         postAuthor
         createdAt
+        comments {
+          _id
+          commentText
+          commentAuthor
+          createdAt
+        }
       }
       friends
     }
@@ -56,6 +62,23 @@ export const QUERY_POSTS = gql`
     }
   }
 `;
+
+export const QUERY_POST = gql`
+  query post($_id: ID!){
+    post (_id: $_id) {
+      _id
+      postImage
+      postText
+      postAuthor
+      comments {
+        _id
+        commentText
+        commentAuthor
+        createdAt
+      }
+    }
+  }
+`
 
 export const QUERY_FRIENDS = gql`
   query {
