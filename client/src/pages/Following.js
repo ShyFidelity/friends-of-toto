@@ -54,7 +54,7 @@ export default function Following() {
           <div>Loading...</div>
         ) : (
           <Box sx={{ flexGrow: 1 }} style={{ width: "75%" }}>
-            <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
+            <Grid container spacing={2} sx={{ justifyContent: 'left' }}>
               {friendPosts ? (
                 friendPosts.map((post) => (
                   <Grid key={post._id} item xs={12} sm={6} md={4}>
