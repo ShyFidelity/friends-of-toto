@@ -41,7 +41,7 @@
   }
 
 .drop-custom-link {
- 
+  font-family: 'little-dinosaur';
   color: var(--space-cadet);
   padding: 1vw;
 }
