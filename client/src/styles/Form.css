@@ -11,7 +11,7 @@
   min-width: 345px;
   min-height: 675px;
   padding: 6vw;
-  background-color: var(--isabelline) !important;
+  background-color: var(--isabelline-opacity77) !important;
   margin: 5vh;
   border: 1px solid transparent;
   border-radius: 8px;
