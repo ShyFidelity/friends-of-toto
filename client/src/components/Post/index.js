@@ -20,6 +20,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { QUERY_USER, QUERY_POST } from '../../utils/queries';
 import { ADD_FRIEND, REMOVE_FRIEND, ADD_COMMENT } from '../../utils/mutations';
+import Comment from '../Comment/index';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -173,12 +174,17 @@ export default function Post(props) {
           </IconButton>
           {comments ? (
             comments.map((comment) => (
-              <div
+              <Comment
                 key={comment._id}
-              >
-              <Typography>{comment.commentAuthor}</Typography>
-              <Typography paragraph>{comment.commentText}</Typography>
-              </div>
+                commentText={comment.commentText}
+                commentAuthor={comment.commentAuthor}
+              />
+              // <div
+              //   key={comment._id}
+              // >
+              // <Typography>{comment.commentAuthor}</Typography>
+              // <Typography paragraph>{comment.commentText}</Typography>
+              // </div>
             ))
           ) : (
             <div>Loading...</div>
