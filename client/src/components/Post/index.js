@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { useProfileContext } from '../../utils/GlobalState';
-import { UPDATE_FRIEND_POSTS } from '../../utils/actions';
+import { UPDATE_FRIEND_POSTS, UPDATE_DISCOVER_POSTS } from '../../utils/actions';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -91,6 +91,13 @@ export default function Post(props) {
     ) {
       addFriend({
         variables: { username: props.postAuthor },
+      });
+      const newDiscoverPosts = props.discoverPosts.filter(
+        (post) => post.postAuthor !== props.postAuthor
+      );
+      dispatch({
+        type: UPDATE_DISCOVER_POSTS,
+        discoverPosts: newDiscoverPosts,
       });
     } else {
       removeFriend({
