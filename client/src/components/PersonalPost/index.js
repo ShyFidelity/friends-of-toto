@@ -18,6 +18,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import '../PersonalPost/PersonalPost.css';
 import { QUERY_POST } from '../../utils/queries';
 import { REMOVE_POST, ADD_COMMENT } from '../../utils/mutations';
+import Comment from '../Comment/index';
 
 // import MoreVertIcon from '@mui/icons-material/MoreVert';
 
@@ -149,12 +150,18 @@ export default function PersonalPost(props) {
           </IconButton>
           {comments ? (
             comments.map((comment) => (
-              <div
-                key={comment._id}
-              >
-              <Typography>{comment.commentAuthor}</Typography>
-              <Typography paragraph>{comment.commentText}</Typography>
-              </div>
+              <Comment 
+              key={comment._id}
+              commentText={comment.commentText}
+              commentAuthor={comment.commentAuthor}
+
+              />
+              // <div
+              //   key={comment._id}
+              // >
+              // <Typography>{comment.commentAuthor}</Typography>
+              // <Typography paragraph>{comment.commentText}</Typography>
+              // </div>
             ))
           ) : (
             <div>Loading...</div>

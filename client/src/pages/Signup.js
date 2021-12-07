@@ -9,7 +9,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
-import puppyPaw from '../images/puppypaw.svg'
+import puppyPaw from '../images/pawlike.svg'
 
 import Auth from '../utils/auth';
 import '../styles/Form.css'
@@ -106,7 +106,7 @@ const Signup = () => {
         display: 'flex',
         flexWrap: 'wrap',
         '& > :not(style)': {
-          m: 1,
+        
           width: 128,
           height: 128,
         },
