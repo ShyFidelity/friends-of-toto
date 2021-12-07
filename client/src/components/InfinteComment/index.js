@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { DataGridPro, GridOverlay } from '@mui/x-data-grid-pro';
-
+import {
+  useDemoData,
+  getRealGridData,
+  getCommodityColumns,
+} from '@mui/x-data-grid-generator';
 import LinearProgress from '@mui/material/LinearProgress';
 
 const MAX_ROW_LENGTH = 500;
@@ -23,7 +27,7 @@ function CustomLoadingOverlay() {
   );
 }
 
-export default function CommentGrid(props) {
+export default function InfiniteComment(postId) {
   const [loading, setLoading] = React.useState(false);
   const [loadedRows, setLoadedRows] = React.useState([]);
   const mounted = React.useRef(true);

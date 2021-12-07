@@ -151,10 +151,9 @@ export default function PersonalPost(props) {
           {comments ? (
             comments.map((comment) => (
               <Comment 
-              key={comment._id}
-              commentText={comment.commentText}
-              commentAuthor={comment.commentAuthor}
-
+                key={comment._id}
+                commentText={comment.commentText}
+                commentAuthor={comment.commentAuthor}
               />
               // <div
               //   key={comment._id}
