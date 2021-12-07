@@ -9,10 +9,10 @@
 
 .signup-login-card {
   min-width: 345px;
-  min-height: 655px;
-  padding: 6%;
+  min-height: 675px;
+  padding: 6vw;
   background-color: var(--isabelline) !important;
-  margin: 5%;
+  margin: 5vh;
   border: 1px solid transparent;
   border-radius: 8px;
   box-shadow: 0.1em 0 0.2em 0.01em var(--heliotrope-gray);

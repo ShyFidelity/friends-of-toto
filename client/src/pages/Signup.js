@@ -106,7 +106,7 @@ const Signup = () => {
         display: 'flex',
         flexWrap: 'wrap',
         '& > :not(style)': {
-          m: 1,
+        
           width: 128,
           height: 128,
         },
