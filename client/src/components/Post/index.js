@@ -176,6 +176,7 @@ export default function Post(props) {
               <div
                 key={comment._id}
               >
+              <Avatar alt="Profile Pic" src={process.env.REACT_APP_URL + comment.commentAuthor} />
               <Typography>{comment.commentAuthor}</Typography>
               <Typography paragraph>{comment.commentText}</Typography>
               </div>

@@ -103,7 +103,8 @@ export default function ProfileSettings() {
   };
 
   const handleFileInput = (e) => {
-    setSelectedFile(e.target.files[0]);
+    let newFile = new File([e.target.files[0]], username);
+    setSelectedFile(newFile);
   }
   const onImageClick = async () => {
     await inputEl.current.click();

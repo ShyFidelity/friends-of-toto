@@ -11,6 +11,7 @@ import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { TextField } from '@material-ui/core';
 import AddIcon from '@mui/icons-material/Add';
@@ -152,6 +153,7 @@ export default function PersonalPost(props) {
               <div
                 key={comment._id}
               >
+              <Avatar alt="Profile Pic" src={process.env.REACT_APP_URL + comment.commentAuthor} />
               <Typography>{comment.commentAuthor}</Typography>
               <Typography paragraph>{comment.commentText}</Typography>
               </div>
