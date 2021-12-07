@@ -21,10 +21,10 @@ export default function Landing() {
     <div className={classes.root}>
       <header className="App-header">
         <img src={toto} className="App-logo" alt="toto dog logo" />
-        <h3>Friends of Toto!</h3>
-        <p>
+        <h1>Friends of Toto!</h1>
+        <h4>
           A social network for animals because people talk too much. 
-        </p>
+        </h4>
           <Button className="landingButton"><Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>Login</Link></Button>
           <Button className="landingButton"><Link to='/signup' style={{ textDecoration: 'none', color: 'white' }}>Create Account</Link></Button>
     

@@ -38,10 +38,17 @@ form {
 }
 
 .form-input {
+  font-family: Arial, Helvetica, sans-serif;
   color: var(--space-cadet) !important;
   padding: 2%;
   border-bottom: var(--independence) 1px solid;
+  border-radius: 8px;
+  margin: 4px;
 
+}
+
+textarea {
+  border: transparent 1px solid;
 }
 
 input {

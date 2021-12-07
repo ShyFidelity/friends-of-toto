@@ -12,4 +12,11 @@
       margin: 2% !important;
   }
 
+h1 {
+  font-family: 'little-dinosaur';
+}
 
+h4 {
+  font-size: 32px;
+  font-family: 'little-dinosaur-lite';
+}

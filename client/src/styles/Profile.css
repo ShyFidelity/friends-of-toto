@@ -27,3 +27,7 @@ a:visited {
 
     text-decoration: none;
   }
+ .MuiInputBase-root{
+      margin: 4px;
+     min-width: 200px;
+  }
