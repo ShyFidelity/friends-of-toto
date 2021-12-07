@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_FRIEND_POSTS } from '../utils/queries';
 import { useProfileContext } from '../utils/GlobalState';
-import {
-  UPDATE_FRIEND_POSTS
-} from '../utils/actions';
+import { UPDATE_FRIEND_POSTS } from '../utils/actions';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
@@ -48,6 +46,7 @@ export default function Following() {
   return (
     <>
       <StickyHeader />
+
       <div className="page">
         <h2>Woof! Woof!</h2>
         {validation ? (

@@ -113,3 +113,21 @@ export const QUERY_FRIEND_POSTS = gql`
     }
   }
 `;
+
+export const QUERY_DISCOVER_POSTS = gql`
+  query discoverPosts($friends: [String]) {
+    discoverPosts(friends: $friends) {
+      _id
+      postImage
+      postText
+      postAuthor
+      createdAt
+      comments {
+        _id
+        commentText
+        commentAuthor
+        createdAt
+      }
+    }
+  }
+`;
