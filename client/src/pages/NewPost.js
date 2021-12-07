@@ -14,6 +14,7 @@ import { NEW_POST } from "../utils/mutations";
 
 import { uploadFile } from "react-s3";
 import changePic from "../images/puppyPic.svg";
+import '../styles/Form.css'
 
 
 const config = {
@@ -88,7 +89,8 @@ export default function NewPost() {
   };
 
   return (
-    <Card className={classes.root}>
+    <div className="page">
+    <Card className="newpost-card" >
       <input
         accept="image/*"
         id="new-post-pic-file"
@@ -146,5 +148,6 @@ export default function NewPost() {
         </Button>
       </CardActions>
     </Card>
+    </div>
   );
 }
