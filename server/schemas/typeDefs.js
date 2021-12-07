@@ -38,6 +38,7 @@ const typeDefs = gql`
     user(username: String!): User
     userPosts(username: String): [Post]
     friendPosts(friends: [String]): [Post]
+    discoverPosts(friends: [String]): [Post]
     posts: [Post]
     post(_id: ID!): Post
     me: User

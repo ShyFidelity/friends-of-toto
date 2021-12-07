@@ -182,7 +182,7 @@ const Signup = () => {
                         <CardMedia
                           component="img"
                           className={classes.media}
-                          image={formState.profilePic}
+                          image={profilePic}
                           title="profile picture"
                         />
                         <div

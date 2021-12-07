@@ -22,6 +22,17 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    discoverPosts: async (parent, args, context) => {
+      if (context.user) {
+        return Post.find({
+          "$nor": [
+            {postAuthor: { $in: [...args.friends] }},
+            {postAuthor: context.user.username}
+          ]
+        }).sort({ createdAt: -1 });
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
     post: async (parent, { _id }) => {
       return Post.findOne({ _id: _id }).populate('comments');
     },
