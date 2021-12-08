@@ -152,7 +152,7 @@ const Signup = () => {
                   <textarea
                     form="newProfile"
                     className="form-input"
-                    placeholder="Your Bio"
+                    placeholder="Tell us more about you!"
                     name="bio"
                     value={formState.bio}
                     rows='3'
