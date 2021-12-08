@@ -69,6 +69,9 @@ export default function PersonalPost(props) {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+    if (commentExpanded) {
+      setCommentExpanded(!commentExpanded)
+    }
   };
 
   const handleExpandCommentClick = () => {

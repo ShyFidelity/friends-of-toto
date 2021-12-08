@@ -67,6 +67,9 @@ export default function Post(props) {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+    if (commentExpanded) {
+      setCommentExpanded(!commentExpanded)
+    }
   };
 
   const handleExpandCommentClick = () => {
