@@ -52,7 +52,7 @@ const Signup = () => {
     password: '',
     bio: '',
   });
-  const [profilePic, setProfilePic] = useState("")
+  const [profilePic, setProfilePic] = useState(totoBlackAndBlue)
 
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -182,7 +182,7 @@ const Signup = () => {
                         <CardMedia
                           component="img"
                           className={classes.media}
-                          image={totoBlackAndBlue}
+                          image={profilePic}
                           title="profile picture"
                         />
                         <div

@@ -49,7 +49,7 @@ export default function NewPost() {
   let history = useHistory();
   const classes = useStyles();
   const [postText, setPostText] = useState("")
-  const [postImage, setPostImage] = useState(null)
+  const [postImage, setPostImage] = useState(totoBlackAndBlue)
 
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -114,10 +114,9 @@ export default function NewPost() {
           onClick={() => onImageClick()}
         >
           <CardMedia
-            className="toto-black-and-blue"
             component="img"
             className={classes.media}
-            image={totoBlackAndBlue}
+            image={postImage}
             title="new post"
           />
           <div
