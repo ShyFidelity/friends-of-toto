@@ -1,0 +1,13 @@
+.comment {
+  margin-top: 10px;
+  border-bottom: dotted gray 2px;
+}
+
+.comment-header {
+  margin-bottom: 5px;
+}
+
+.comment-text {
+  margin-bottom: 5px;
+  text-align: center;
+}
