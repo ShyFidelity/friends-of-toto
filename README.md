@@ -49,8 +49,7 @@ Live URL: https://friendsoftoto.herokuapp.com/
 
 ## Visual Example
 
-<!-- add GIF here  -->
-<img src="" width="500px" />
+<img src='https://github.com/ShyFidelity/friends-of-toto/blob/main/assets/fototo-walkthrough.gif' width="500px">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
