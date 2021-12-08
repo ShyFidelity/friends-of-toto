@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import '../styles/Form.css'
-import puppyPaw from '../images/likebtn.svg'
+import puppyPaw from '../images/pawlike.svg'
 
 import Auth from '../utils/auth';
 
@@ -79,9 +79,7 @@ const Login = (props) => {
                     type="submit"
                   >
                     Submit
-
-                    
-                <img style={{ padding: 3}} width="20px" src={puppyPaw} alt="puppy paw" />
+                  <img src={puppyPaw} width="20px" alt="puppy paw" />
                   </button>
                 </form>
                 <p>New Here? <button className="login-btn"><Link to="/signup">Create Account</Link></button></p>

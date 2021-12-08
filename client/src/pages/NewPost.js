@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import { TextField } from "@material-ui/core";
 import "../components/ProfileSettings/ProfileSettings.css";
 import { NEW_POST } from "../utils/mutations";
+import StickyHeader from '../components/StickyHeader/index'
 
 import { uploadFile } from "react-s3";
 import changePic from "../images/puppyPic.svg";
@@ -90,6 +91,7 @@ export default function NewPost() {
 
   return (
     <div className="page">
+      <StickyHeader />
     <Card className="newpost-card" >
       <input
         accept="image/*"
