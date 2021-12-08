@@ -13,6 +13,6 @@ h2 {
     font-family: 'little-dinosaur';
 }
 
-.discoverDogs {
+.discoverDogs, .cats {
     margin-top: 4%;
 }

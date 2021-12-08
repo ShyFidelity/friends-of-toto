@@ -5,6 +5,7 @@ import { useProfileContext } from '../utils/GlobalState';
 import { UPDATE_FRIEND_POSTS } from '../utils/actions';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import thoughtsOnCats from '../images/thoughtsoncats.svg'
 
 import StickyHeader from '../components/StickyHeader/index';
 import Post from '../components/Post/index';
@@ -48,6 +49,7 @@ export default function Following() {
       <StickyHeader />
 
       <div className="page">
+      <img className="cats" src= {thoughtsOnCats} width="300px" alt="toto doesn't know how he feels about cats" />
         <h2>Woof! Woof!</h2>
         {validation ? (
           <div>Loading...</div>
