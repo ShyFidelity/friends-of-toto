@@ -1,13 +1,18 @@
 .comment {
+  background-color: var(--space-cadet);
   margin-top: 10px;
-  border-bottom: dotted gray 2px;
+  opacity: 80%;
+  border-radius: 5px;
+  padding: 4px;
 }
 
 .comment-header {
   margin-bottom: 5px;
+  color: white;
 }
 
 .comment-text {
   margin-bottom: 5px;
   text-align: center;
+  color: white;
 }
