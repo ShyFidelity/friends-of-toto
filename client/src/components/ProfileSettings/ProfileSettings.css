@@ -40,4 +40,8 @@
     
     background-color:var(--silver-pink);
     margin: 1%;
+    border: transparent 1px solid;
+    border-radius: 6px;
   }
+
+ 

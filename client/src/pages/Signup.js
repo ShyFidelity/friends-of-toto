@@ -10,7 +10,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
 import puppyPaw from '../images/pawlike.svg'
-
+import totoBlackAndBlue from '../images/totoblackandblue.png'
 import Auth from '../utils/auth';
 import '../styles/Form.css'
 
@@ -182,7 +182,7 @@ const Signup = () => {
                         <CardMedia
                           component="img"
                           className={classes.media}
-                          image={profilePic}
+                          image={totoBlackAndBlue}
                           title="profile picture"
                         />
                         <div
