@@ -6,7 +6,7 @@
 
 ## Descritpion
 
-add in a description here
+Friends of Toto is a website designed to bring pets together! Here you can create an account for your pet, upload photos, and intereact with other pet users. The application allows you to follower users and you are able to add comments to posts.
 
 Live URL: https://friendsoftoto.herokuapp.com/
 
@@ -20,7 +20,6 @@ Live URL: https://friendsoftoto.herokuapp.com/
 - [Getting Started](#getting-started)
 - [Visual Example](#visual-example)
 - [Usage](#usage)
-- [Our Inspiration](#inspiration)
 - [Contributing](#contributing)
 - [Breakdown of Tasks](#breakdown)
 - [Future Development](#future-development)
@@ -55,31 +54,29 @@ Live URL: https://friendsoftoto.herokuapp.com/
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Our Inspiration
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ## Contributors
 
 - [Jillian FitzMaurice](https://github.com/ShyFidelity)
-- [Nate Irvin](https://github.com/irv0735)
+- [Nate Irvin](https://github.com/irv0735)x
 - [Micheal Limones](https://github.com/ZestyLimones)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Breakdown of Tasks
 
-- Jillian -
-- Nate -
-- Micheal -
+- Jillian: Design Magician! 🪄 In charge of making the site pet friendly.
+- Nate: React Maestro! 🎼 Knowledge expert of the group with primary focus on React.
+- Micheal: GraphQL Mechanic! 🛠 In charge of setting up the database.
+- The team did a reallyy great job of wearing multiple hats 🎩 🧢 👒 and helping each other out.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Future Development
 
--
--
--
+- Allow infinity scroll on posts
+- Incorporate a section within the site where users can donate to a pet shelter
+- Allow you to view individual user pages and follow them from her personal page
+- Allow you to “like” a post
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
