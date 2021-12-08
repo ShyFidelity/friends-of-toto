@@ -12,7 +12,7 @@ import { TextField } from "@material-ui/core";
 import "../components/ProfileSettings/ProfileSettings.css";
 import { NEW_POST } from "../utils/mutations";
 import StickyHeader from '../components/StickyHeader/index'
-
+import totoBlackAndBlue from '../images/totoblackandblue.png'
 import { uploadFile } from "react-s3";
 import changePic from "../images/puppyPic.svg";
 import '../styles/Form.css'
@@ -42,6 +42,7 @@ const useStyles = makeStyles({
     height: 345,
     maxWidth: 345,
   },
+
 });
 
 export default function NewPost() {
@@ -113,9 +114,10 @@ export default function NewPost() {
           onClick={() => onImageClick()}
         >
           <CardMedia
+            className="toto-black-and-blue"
             component="img"
             className={classes.media}
-            image={postImage}
+            image={totoBlackAndBlue}
             title="new post"
           />
           <div
