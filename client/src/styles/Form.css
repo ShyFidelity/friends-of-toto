@@ -70,6 +70,7 @@ form {
 
 textarea {
   border: transparent 1px solid;
+  resize: none;
 }
 
 input {
